@@ -104,6 +104,9 @@ def getInfo():
 		elif model == "optimussos2":
 			model = "Optimuss-OS2"
 			brand = "Edision"
+		elif model == "sogno-8800hd":
+			brand = "Sogno"
+			model = "Sogno 8800HD"
 	elif fileExists("/proc/stb/info/boxtype"):
 		file = open("/proc/stb/info/boxtype")
 		model = file.read().strip().lower()
@@ -150,9 +153,6 @@ def getInfo():
 		elif model == "enfinity":
 			brand = "EVO"
 			model = "ENfinity"
-		elif model == "sogno-8800hd":
-			brand = "Sogno"
-			model = "Sogno 8800HD"
 		elif model == "xp1000":
 			brand = "XP-Series"
 		elif model == "xp1000s":
