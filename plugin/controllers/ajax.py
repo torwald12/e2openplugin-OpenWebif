@@ -159,6 +159,20 @@ class AjaxController(BaseController):
 			model = "sogno8800hd"
 		elif model == 'ENfinity':
 			model = "enfinity"
+		elif getBoxType() == 'gb800solo':
+			model = "gb800solo"
+		elif getBoxType() == 'gb800se':
+			model = "gb800se"
+		elif getBoxType() == 'gb800ue':
+			model = "gb800ue"
+		elif getBoxType() == 'gb800seplus':
+			model = "gb800seplus"
+		elif getBoxType() == 'gb800ueplus':
+			model = "gb800ueplus"
+		elif getBoxType() == 'gbquad':
+			model = "gbquad"
+		elif getBoxType() == 'gbquadplus':
+			model = "gbquadplus"
 		if fileExists(getPublicPath("/images/boxes/" + model + ".jpg")):
 			info["boximage"] = model + ".jpg"
 		else:
