@@ -128,7 +128,7 @@ class AjaxController(BaseController):
 			model = "tmsingle"
 		elif model == "TM-NANO-OE":
 			model = "tmnano"
-		elif getBoxType() == 'ixusssone':
+		elif getBoxType() == 'ixussone':
 			model = "ixussone"
 		elif getBoxType() == 'ixussduo':
 			model = "ixussduo"

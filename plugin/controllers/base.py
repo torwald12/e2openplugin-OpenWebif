@@ -229,7 +229,7 @@ class BaseController(resource.Resource):
 			ret["remote"] = "e3hd"
 		elif ret["box"] in ("ebox5000", "ebox5100", "ebox7358"):
 			ret["remote"] = "ebox5000"
-		elif getBoxType() == 'ixusssone':
+		elif getBoxType() == 'ixussone':
 			ret["remote"] = "ixussone"
 		elif getBoxType() == 'ixussduo':
 			ret["remote"] = "ixussone"
