@@ -20,7 +20,7 @@
 //*******************************************************************************
 
 $.fx.speeds._default = 1000;
-var loadspinner = "<div id='spinner' ><img src='../images/spinner.gif' alt='loading...' /></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null;
+var loadspinner = "<div id='spinner'><div class='fa fa-spinner fa-spin'></div></div>",mutestatus = 0,lastcontenturl = null,screenshotMode = 'all',MessageAnswerCounter=0,shiftbutton = false,grabTimer = 0,at2add = null;
 
 $(function() {
 	
@@ -197,23 +197,25 @@ function initJsTranslation(strings) {
 
 function wait_for_openwebif() {
 	var restartCheck = window.setInterval(function() {
-		$.getJSON('/api/statusinfo').success(function() {
-			window.clearInterval(restartCheck);
-			$("#modaldialog").dialog('close');
-			location.reload();
-		});
+		webapi_execute('/api/statusinfo',
+			function() {
+				window.clearInterval(restartCheck);
+				$("#modaldialog").dialog('close');
+				location.reload();
+			});
 	}, 2000);
 }
 
 function handle_power_state_dialog(new_power_state) {
 	var timeout = 0;
+	var sp = loadspinner.replace("'spinner'","'spinner1'");
 	$("#modaldialog").dialog('close');
 	if ( new_power_state === 2 ) {
-		load_info_dialog('ajax/rebootdialog',tstr_reboot_box);
+		load_info_dialog(sp,tstr_reboot_box);
 		wait_for_openwebif();
 		timeout = 1000 ;
 	} else if ( new_power_state === 3 ) {
-		load_info_dialog('ajax/rebootdialog',tstr_restart_gui);
+		load_info_dialog(sp,tstr_restart_gui);
 		wait_for_openwebif();
 		timeout = 1000 ;
 	}
@@ -222,30 +224,23 @@ function handle_power_state_dialog(new_power_state) {
 	}, timeout);
 }
 
-function load_info_dialog(url,title,w,h){
+function load_info_dialog(data,title,w,h){
 	var width = 'auto',height='auto';
 	if (typeof w !== 'undefined')
 		width = w;
 	if (typeof h !== 'undefined')
 		height = h;
 
-	$.ajax({
-		url: url,
-		success: function(data) {
-			$("#modaldialog").html(data).dialog({
-				modal:true,
-				title:title,
-				autoOpen:true,
-				width:width,
-				height:height,
-				close: function(event, ui) { 
-					$(this).dialog('destroy');
-				},
-			});
-		},error: function(){
-			alert('error! Loading Page');
-		}
-		
+	$("#modaldialog").html(data).dialog({
+		modal:true,
+		title:title,
+		autoOpen:true,
+		width:width,
+		height:height,
+		close: function(event, ui) { 
+			$(this).dialog('destroy');
+			$("#modaldialog").html('');
+		},
 	});
 }
 
@@ -266,6 +261,7 @@ function load_dm_spinner(url,title,w,h,buttons){
 		buttons:buttons,
 		close: function(event, ui) { 
 			$(this).dialog('destroy');
+			$("#modaldialog").html('');
 		},
 		open: function() {
 		$.ajax({
@@ -303,6 +299,7 @@ function load_dm(url,title,w,h){
 				buttons:buttons,
 				close: function(event, ui) { 
 					$(this).dialog('destroy');
+					$("#modaldialog").html('');
 				},
 				open: function() {
 					$(this).siblings('.ui-dialog-buttonpane').find('button:eq(0)').focus(); 
@@ -331,6 +328,7 @@ function load_message_dm(url,title){
 				buttons: buttons,
 				close: function(event, ui) { 
 					$(this).dialog('destroy');
+					$("#modaldialog").html('');
 				}
 			});
 		}
@@ -371,10 +369,10 @@ function load_maincontent_spin(url) {
 
 function webapi_execute(url, callback) {
 	var jqxhr = $.ajax( url ).done(function() { 
-    		if (typeof callback !== 'undefined') {
-    			callback();
-    		}
-    	});
+	if (typeof callback !== 'undefined') {
+			callback();
+		}
+	});
 	return false;
 }
 
@@ -450,12 +448,17 @@ function addTimerEventPlay(sRef, eventId) {
 
 function addEditTimerEvent(sRef, eventId) {
 	var url="/api/event?sref=" + sRef + "&idev=" + eventId;
-	$.getJSON(url, function(result){
-		if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
-			addTimer(result.event);
-		}
-		else
-			alert("Event not found");
+	$.ajax({
+		url: url,
+		dataType: "json",
+		success: function(result) { 
+			if (typeof result !== 'undefined' && typeof result.event !== 'undefined') {
+				addTimer(result.event);
+			}
+			else
+				alert("Event not found");
+		},
+		error: function(data) {}
 	});
 }
 
@@ -482,7 +485,7 @@ function addAutoTimerEvent(sRef, sname, title ,begin, end) {
 		
 		}
 		$("#modaldialog").dialog('destroy');
-		
+		$("#modaldialog").html('');
 }
 
 function delTimerEvent(obj) {
@@ -492,11 +495,18 @@ function delTimerEvent(obj) {
 function toggleTimerStatus(sRef, begin, end) {
 	var url="/api/timertogglestatus?";
 	var data = { sRef: sRef, begin: begin, end: end };
-	$.getJSON(url, data, function(result){
-		var obj = $('#img-'+begin+'-'+end);
-		obj.removeClass("ow_i_disabled");
-		obj.removeClass("ow_i_enabled");
-		obj.addClass(result['disabled'] ? "ow_i_disabled" : "ow_i_enabled");
+	
+	$.ajax({
+		url: url,
+		dataType: "json",
+		data:data,
+		success: function(result) { 
+			var obj = $('#img-'+begin+'-'+end);
+			obj.removeClass("fa-square-o");
+			obj.removeClass("fa-check-square-o");
+			obj.addClass(result['disabled'] ? "fa-square-o" : "fa-check-square-o");
+		},
+		error: function(data) {}
 	});
 }
 
@@ -535,7 +545,9 @@ function playRecording(sRef) {
 	// for debugging 
 	console.debug(sr);
 	var url = '/api/zap?sRef=' + sr;
-	$.getJSON(url, function(result){
+	
+	webapi_execute(url,
+	function() {
 		$("#osd").html(" ");
 		$("#osd_bottom").html(" ");
 	});
@@ -543,7 +555,8 @@ function playRecording(sRef) {
 
 function zapChannel(sRef, sname) {
 	var url = '/api/zap?sRef=' + escape(sRef);
-	$.getJSON(url, function(result){
+	webapi_execute(url,
+	function() {
 		$("#osd").html(tstr_zap_to + ': ' + sname);
 		$("#osd_bottom").html(" ");
 	});
@@ -558,11 +571,17 @@ function toggleStandby() {
 }
 
 function getStatusInfo() {
-	$.ajaxSetup({ cache: false });
-	$.getJSON('/api/statusinfo').success(function(statusinfo) {
+
+	$.ajax({
+		url: '/api/statusinfo',
+		dataType: "json",
+		cache: false,
+		success: function(statusinfo) { 
 		// Set Volume
 		$("#slider").slider("value", statusinfo['volume']);
 		$("#amount").val(statusinfo['volume']);
+
+// TODO: remove images
 		
 		// Set Mute Status
 		if (statusinfo['muted'] == true) {
@@ -572,29 +591,31 @@ function getStatusInfo() {
 			mutestatus = 0;
 			$("#volimage").attr("src","/images/volume.png");
 		}
+// TODO: remove inline style
 
+		var stream = "";
 		if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:1") !== -1) || (statusinfo['currservice_serviceref'].indexOf("1:134:1") !== -1))) {
 			var stream = "";
 			if (statusinfo['transcoding']) {
-				stream += "<a href='#' onclick=\"jumper8001('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
-				stream += "<a href='#' onclick=\"jumper8002('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream02.png'></img></a>&nbsp;";
+				stream += "<a href='#' onclick=\"jumper8001('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
+				stream += "<a href='#' onclick=\"jumper8002('" + statusinfo['currservice_serviceref'] + "', '" + statusinfo['currservice_station'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><i class='fa fa-mobile'></i></a>&nbsp;";
 			} else {
-				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
+				stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
 			}
 			$("#osd").html(stream + "<span style='color:#EA7409;font-weight:bold'><a style='color:#EA7409;font-weight:bold;text-decoration:none;' href='#' onClick='load_maincontent(\"ajax/tv\");return false;'>" + statusinfo['currservice_station'] + "</a></span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + "<a style='color:#ffffff;text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + statusinfo['currservice_serviceref'] + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 			$("#osd_bottom").html(statusinfo['currservice_description']);
 		} else if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:2") !== -1) || (statusinfo['currservice_serviceref'].indexOf("1:134:2") !== -1))) {
 			var stream = "";
-			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
+			stream += "<a target='_blank' href='/web/stream.m3u?ref=" + statusinfo['currservice_serviceref'] + "&name=" + statusinfo['currservice_station'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
 			$("#osd").html(stream + "<span style='color:#EA7409;font-weight:bold;'>" + "<a style='color:#EA7409;font-weight:bold;text-decoration:none;' href='#' onClick='load_maincontent(\"ajax/radio\");return false;'>" + statusinfo['currservice_station'] + "</a></span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + "<a style='color:#ffffff;text-decoration:none;' href=\"#\" onclick=\"open_epg_pop('" + statusinfo['currservice_serviceref'] + "')\" title='" + statusinfo['currservice_fulldescription'] + "'>" + statusinfo['currservice_name'] + "</a>");
 			$("#osd_bottom").html(statusinfo['currservice_description']);
 		} else if ((statusinfo['currservice_station']) && ((statusinfo['currservice_serviceref'].indexOf("1:0:0") !== -1))) {
 			var stream = "";
 			if (statusinfo['transcoding']) {
-				stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
-				stream += "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream02.png'></img></a>&nbsp;";
+				stream += "<a href='#' onclick=\"jumper80('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
+				stream += "<a href='#' onclick=\"jumper8003('" + statusinfo['currservice_filename'] + "')\"; title='" + tstr_stream + " (" + tstr_transcoded + "): " + statusinfo['currservice_station'] + "'><i class='fa fa-mobile'></i></a>&nbsp;";
 			} else {
-				stream += "<a target='_blank' href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><img src='../images/ico_stream.png'></img></a>&nbsp;";
+				stream += "<a target='_blank' href='/web/ts.m3u?file=" + statusinfo['currservice_filename'] + "' title='" + tstr_stream + ": " + statusinfo['currservice_station'] + "'><i class='fa fa-desktop'></i></a>&nbsp;";
 			}
 			$("#osd").html(stream + "<span style='color:#EA7409;font-weight:bold;'>" + statusinfo['currservice_station'] + "</span>&nbsp;&nbsp;" + statusinfo['currservice_begin'] + " - " + statusinfo['currservice_end'] + "&nbsp;&nbsp;" + statusinfo['currservice_name']);
 			$("#osd_bottom").html(statusinfo['currservice_description']);
@@ -605,6 +626,8 @@ function getStatusInfo() {
 			$("#osd").html(tstr_nothing_play);
 			$("#osd_bottom").html('');
 		}
+		
+// TODO: remove images
 		var status = "";
 		if (statusinfo['isRecording'] == 'true') {
 			var timercall = "load_maincontent('ajax/timers'); return false;";
@@ -618,8 +641,9 @@ function getStatusInfo() {
 		}
 		status += "' width='58' height='24' /></a>";
 		$("#osd_status").html(status);
-	}).error(function() {
+	} , error: function() {
 		$("#osd, #osd_bottom").html("");
+	}
 	});
 }
 
@@ -645,8 +669,12 @@ function grabScreenshot(mode) {
 }
 
 function getMessageAnswer() {
-	$.getJSON('/api/messageanswer', function(result){
-		$('#messageSentResponse').html(result['message']);
+	$.ajax({
+		url: '/api/messageanswer',
+		dataType: "json",
+		success: function(result) { 
+			$('#messageSentResponse').html(result['message']);
+		}
 	});
 }
 
@@ -667,27 +695,32 @@ function sendMessage() {
 	var type = $('#messageType').val();
 	var timeout = $('#messageTimeout').val();
 
-	$.getJSON('/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout, function(result){
-		$('#messageSentResponse').html(result['message']);
-		if(type==0)
-		{
-			MessageAnswerCounter=timeout;
-			setTimeout(countdowngetMessage, 1000);
+	$.ajax({
+		url: '/api/message?text=' + text + '&type=' + type + '&timeout=' + timeout,
+		dataType: "json",
+		success: function(result) { 
+			$('#messageSentResponse').html(result['message']);
+			if(type==0)
+			{
+				MessageAnswerCounter=timeout;
+				setTimeout(countdowngetMessage, 1000);
+			}
 		}
 	});
-	
 }
 
 function toggleMenu(name) {
 	var expander_id = "#leftmenu_expander_" + name;
 	var container_id = "#leftmenu_container_" + name;
-	if ($(expander_id).hasClass("leftmenu_icon_collapse")) {
-		$(expander_id).removeClass("leftmenu_icon_collapse");
+	if ($(expander_id).hasClass("ui-icon-caret-1-w")) {
+		$(expander_id).removeClass("ui-icon-caret-1-w");
+		$(expander_id).addClass("ui-icon-caret-1-s");
 		$(container_id).show('fast');
 		webapi_execute("/api/expandmenu?name=" + name);
 	}
 	else {
-		$(expander_id).addClass("leftmenu_icon_collapse");
+		$(expander_id).addClass("ui-icon-caret-1-w");
+		$(expander_id).removeClass("ui-icon-caret-1-s");
 		$(container_id).hide('fast');
 		webapi_execute("/api/collapsemenu?name=" + name);
 	}
@@ -1101,6 +1134,7 @@ function addTimer(evt,chsref,chname) {
 function InitAccordeon(obj)
 {
 	// init accordeon for jquery UI 1.8.x
+	/*
 	$(obj).accordion({
 		active: false,
 		change: function(event, ui) {
@@ -1111,10 +1145,12 @@ function InitAccordeon(obj)
 		autoHeight: false,
 		collapsible: true
 	});
+	*/
 	// init accordeon for jquery UI 1.11.x
-	/*
+	
 	$(obj).accordion({
 		active: true,
+		animate: false,
 		activate: function(event, ui) {
 			ui.oldPanel.empty();
 			ui.oldPanel.html(tstr_loading + " ...");
@@ -1123,15 +1159,56 @@ function InitAccordeon(obj)
 		heightStyle: "content",
 		collapsible: true
 	});
-	*/
+	
+}
+
+function RefreshMEPG()
+{
+	if(typeof(Storage) !== "undefined") {
+		if(localStorage.lastmbq)
+		{
+			var bq= "?bref=" + localStorage.lastmbq;
+			$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq,function() {
+				ExpandMEPG();
+			});
+		}
+	}
+
+}
+
+function ExpandMEPG()
+{
+	$("#expandmepg").hide();
+	$("#compressmepg").show();
+	$("#refreshmepg").show();
+	$("#header").hide();
+	$("#leftmenu").hide();
+	$('#content').css('margin-left', '5px')
+	$('#tvcontentmain > #toolbar-header').hide();
+	$("#tbl1body").height('100%');
+	$("#tvcontent").css('max-height','100%');
+
+}
+
+function CompressMEPG()
+{
+	$("#refreshmepg").hide();
+	$("#expandmepg").show();
+	$("#compressmepg").hide();
+	$("#header").show();
+	$("#leftmenu").show();
+	$('#content').css('margin-left', '185px')
+	$('#tvcontentmain > #toolbar-header').show();
+	$("#tvcontent").css('max-height','90%');
+	fixTableHeight();
 }
 
 function InitBouquets(tv)
 {
 	var mode="";
 	if (tv===true) {
-	
 		$('#btn0').click(function(){
+			$("#expandmepg").hide();
 			$("#tvcontent").html(loadspinner).load("ajax/current");
 		});
 		$('#btn5').click(function(){
@@ -1143,6 +1220,7 @@ function InitBouquets(tv)
 				}
 			}
 			$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq);
+			$("#expandmepg").show();
 		});
 
 	} 
@@ -1150,15 +1228,19 @@ function InitBouquets(tv)
 		mode= "?stype=radio";
 	}
 	$('#btn1').click(function(){
+		$("#expandmepg").hide();
 		$("#tvcontent").html(loadspinner).load("ajax/bouquets" + mode);
 	});
 	$('#btn2').click(function(){
+		$("#expandmepg").hide();
 		$("#tvcontent").html(loadspinner).load("ajax/providers" + mode);
 	});
 	$('#btn3').click(function(){
+		$("#expandmepg").hide();
 		$("#tvcontent").load("ajax/satellites" + mode);
 	});
 	$('#btn4').click(function(){
+		$("#expandmepg").hide();
 		$("#tvcontent").html(loadspinner).load("ajax/channels" + mode);
 	});
 	
@@ -1232,3 +1314,49 @@ function jumper8001( sref, sname ) {
 }
 
 /* Vu+ Transcoding end*/
+
+function ChangeTheme(theme)
+{
+	$.ajax({
+		url: "api/settheme?theme=" + theme,
+		success: function() {
+			document.location.reload(true);
+		}
+	});
+}
+
+function tvdirectlink()
+{
+	var parts=window.location.href.toLowerCase().split("#");
+	if(parts[1] == 'tv')
+	{
+		if(parts[2] == 'mepg' || parts[2] == 'mepgfull')
+		{
+			$("#btn5").click();
+			if(parts[2] == 'mepgfull')
+			{
+				$("#expandmepg").click();
+			}
+		}
+	}
+}
+
+function directlink()
+{
+	var parts=window.location.href.toLowerCase().split("#");
+	var lnk='ajax/tv';
+	if(parts[1] == 'radio')
+	{
+		lnk='ajax/radio';
+	}
+	if(parts[1] == 'movies')
+	{
+		lnk='ajax/movies';
+	}
+	if(parts[1] == 'timer')
+	{
+		lnk='ajax/timers';
+	}
+
+	load_maincontent(lnk);
+}

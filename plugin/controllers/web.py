@@ -207,13 +207,7 @@ class WebController(BaseController):
 					service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
 					count += 1
 			return bouquets
-		
-# TODO : remove this if the setting is removed
-		if not config.OpenWebif.xbmcservices.value:
-			return getAllServices(type)
 
-# TODO : remove this if the setting is removed
-		# rename services for xbmc
 		bouquets = getAllServices(type)
 		count = 0
 		for bouquet in bouquets["services"]:
@@ -1185,3 +1179,18 @@ class WebController(BaseController):
 				})
 		return ret
 
+	def P_settheme(self, request):
+		if "theme" in request.args.keys():
+			theme = request.args["theme"][0]
+			config.OpenWebif.theme.value = theme
+			config.OpenWebif.theme.save()
+		return {}
+
+	def P_css(self, request):
+		request.setHeader("content-type", "text/css")
+		ret = {}
+		if config.OpenWebif.theme.value:
+			ret['theme'] = config.OpenWebif.theme.value
+		else:
+			ret['theme'] = 'redmond'
+		return ret

@@ -30,6 +30,8 @@ from httpserver import HttpdStart, HttpdStop, HttpdRestart
 
 from __init__ import _
 
+THEMES = ['base','black-tie','blitzer','cupertino','dark-hive','dot-luv','eggplant','excite-bike','flick','hot-sneaks','humanity','le-frog','mint-choc','overcast','pepper-grinder','redmond','smoothness','south-street','start','sunny','swanky-purse','trontastic','ui-darkness','ui-lightness','vader']
+
 config.OpenWebif = ConfigSubsection()
 config.OpenWebif.enabled = ConfigYesNo(default=True)
 config.OpenWebif.identifier = ConfigYesNo(default=True)
@@ -70,6 +72,9 @@ config.OpenWebif.epg_encoding = ConfigSelection(default = 'utf-8', choices = [ '
 										'iso-8859-9',
 										'iso-8859-10',
 										'iso-8859-16'])
+
+config.OpenWebif.theme = ConfigSelection(default = 'redmond', choices = THEMES )
+
 imagedistro = getInfo()['imagedistro']
 
 class OpenWebifConfig(Screen, ConfigListScreen):
@@ -122,11 +127,11 @@ class OpenWebifConfig(Screen, ConfigListScreen):
 			if config.OpenWebif.auth.value:
 				self.list.append(getConfigListEntry(_("Enable Authentication for streaming"), config.OpenWebif.auth_for_streaming))
 				self.list.append(getConfigListEntry(_("Disable access for user root"), config.OpenWebif.no_root_access))
-			self.list.append(getConfigListEntry(_("Smart services renaming for XBMC"), config.OpenWebif.xbmcservices))
 			self.list.append(getConfigListEntry(_("Enable Parental Control"), config.OpenWebif.parentalenabled))
 			self.list.append(getConfigListEntry(_("Add service name to stream information"), config.OpenWebif.service_name_for_stream))
 			if imagedistro in ("VTi-Team Image"):
 				self.list.append(getConfigListEntry(_("Character encoding for EPG data"), config.OpenWebif.epg_encoding))
+			self.list.append(getConfigListEntry(_("Webinterface jQuery UI Theme"), config.OpenWebif.theme))
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)

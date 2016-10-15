@@ -142,18 +142,37 @@ class AjaxController(BaseController):
 	def P_powerstate(self, request):
 		return {}
 
-	def P_rebootdialog(self, request):
-		return {}
-
 	def P_message(self, request):
 		return {}
 
 	def P_movies(self, request):
+		sorttype = ''
+		if "sort" in request.args.keys():
+			sorttype = request.args["sort"][0]
 		if "dirname" in request.args.keys():
 			movies = getMovieList(request.args["dirname"][0])
 		else:
 			movies = getMovieList()
 		movies['transcoding'] = getTranscodingSupport()
+		
+		if sorttype != '':
+			unsort = movies['movies']
+		if sorttype == 'name':
+			sortkey=1
+			movies['movies'] = sorted(unsort, key=lambda k: k['eventname']) 
+		elif sorttype == 'named':
+			sortkey=2
+			movies['movies'] = sorted(unsort, key=lambda k: k['eventname'],reverse=True) 
+		elif sorttype == 'date':
+			sortkey=3
+			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime']) 
+		elif sorttype == 'dated':
+			sortkey=4
+			movies['movies'] = sorted(unsort, key=lambda k: k['recordingtime'],reverse=True) 
+		else:
+			sortkey=0
+		movies['sortkey'] = sortkey
+		movies['sorttype'] = sorttype
 		return movies
 
 	def P_workinprogress(self, request):
@@ -207,35 +226,6 @@ class AjaxController(BaseController):
 		epg['bouquets'] = bouq['bouquets']
 		epg['bref'] = bref
 		epg['day'] = day
-
-		return epg
-	def P_multiepg2(self, request):
-		reloadtimer = 0
-		if "reloadtimer" not in request.args.keys():
-			reloadtimer = 1
-		bouq = getBouquets("tv")
-		if "bref" not in request.args.keys():
-			bref = bouq['bouquets'][0][0]
-		else:
-			bref = request.args["bref"][0]
-
-		endtime = 1440
-
-		begintime = -1
-		day = 0
-		if "day" in request.args.keys():
-			try:
-				day = int(request.args["day"][0])
-				now = localtime()
-				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 0, 0, 0, -1, -1, -1) )
-			except Exception, e:
-				pass
-
-		epg = getMultiEpg(self, bref, begintime, endtime)
-		epg['bouquets'] = bouq['bouquets']
-		epg['bref'] = bref
-		epg['day'] = day
-		epg['reloadtimer'] = reloadtimer
 
 		return epg
 

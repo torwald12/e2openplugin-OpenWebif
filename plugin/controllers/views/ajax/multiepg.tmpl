@@ -11,6 +11,7 @@
 	.title { font-weight: bold; color: #061c37; }
 	.desc { font-size: 10px; color: #176093; }
 	.even { background-color: #dfeffc; }
+	.odd { background-color: #f0f7fc; }
 	.border { border-right: 1px solid #4297d7; }
 	.event { cursor: pointer; width: 190px; overflow:hidden; }
 	.bq { background-color: #1c478e; font-size: 11px; font-weight: bold; color: #fff; padding: 2px 4px; line-height: 18px; cursor: pointer; white-space: nowrap; display: inline-block; margin: 1px 1px 0px 0px;}
@@ -19,7 +20,7 @@
 	.plus.selected { color: #ea7409; }
 	.timer { color: #f00; font-weight: bold; font-size: 10px; }
 	.timer.disabled { color: #f80; }
-	#eventdescription { width: 375px; height: auto; position: fixed; top: 205px; left: 350px; z-index: 1000; display: none; overflow: auto; }
+	#eventdescription { width: 375px; height: auto; position: fixed; top: 205px; left: 350px; z-index: 100; display: none; overflow: auto; }
 	#navepg { margin-bottom: 1px; }
 	#tbl1 thead tr, #tbl1 tfoot tr { display: block; width: 100%; }
 	#tbl1 tbody { width: 100%; height: 100%; overflow-y: auto; display: block; }
@@ -29,8 +30,10 @@
 
 <div id="navepg">
 #for $slot in range(0,7)
-    <div class="float plus #if $slot==$day then 'selected' else '' #" js:day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
+	<div class="float plus #if $slot==$day then 'selected' else '' #" js:day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
 #end for
+<div id="compressmepg" onclick="CompressMEPG();"><i id="compressmepgi" class="fa fa-compress" aria-hidden="true"></i></div>
+<div id="refreshmepg" onclick="RefreshMEPG();"><i id="refreshmepgi" class="fa fa-refresh" aria-hidden="true"></i></div>
 	<br clear="all">
 
 #for $bq in $bouquets
@@ -112,5 +115,9 @@ fixTableHeight();
 });
 if(!timeredit_initialized)
 	\$('#editTimerForm').load('/ajax/edittimer');
+if(\$("#header").is(':hidden')) { 
+	\$('#compressmepg').show();
+	\$('#refreshmepg').show();
+}
 </script>
 
