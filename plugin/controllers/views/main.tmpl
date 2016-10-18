@@ -11,19 +11,6 @@
 <link rel="shortcut icon" href="images/favicon.png">
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
-<style>
-* {
-margin: 0;
-padding: 0;
-border: 0;
-outline: 0;
-font-weight: inherit;
-font-style: inherit;
-font-size: 100%;
-font-family: inherit;
-background: transparent;
-}
-</style>
 <link rel="stylesheet" href="css/jquery-ui.min.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 #if $t != "original"
@@ -35,9 +22,13 @@ background: transparent;
 <script type="text/javascript">initJsTranslation($dumps($tstrings))</script>
 <title>Open Webif</title>
 </head>
+#if $t == "original"
 <body>
+#else
+<body class="ui-widget-header">
+#end if
 	<div id="container">
-		<div id="header" class="ui-widget-header">
+		<div id="header">
 			<h1><a href="/">Open<span class="off">Webif</span></a></h1>
 			#if not $showname
 				#set boxname=$tstrings['box_info']
