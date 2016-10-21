@@ -69,7 +69,7 @@ body {background-image:none !important;}
 .selectable .ui-selected, .sellist .ui-selected { background: #6eac2c; color: white; }
 .selectable li:hover, .sellist li:hover { background: rgba(110, 172, 44, 0.5) ; color: white;}
 
-#tbl1 .service { color:#fff; background-color: #2191c0;}
+.station { color:#fff; background-color: #2191c0;}
 #tbl1 .title { color:#EEE;}
 #tbl1 .desc { color:#caccce;}
 #tbl1 .even { background-color: rgba(38, 179, 247, 0.5);}
@@ -138,7 +138,7 @@ body {background-image:none !important;}
 	background-color:rgba(38, 179, 247, 0.3);
 }
 
-#tbl1 .service { color:#fff; background-color: #8e8e8e;}
+.station { color:#fff; background-color: #8e8e8e;}
 #tbl1 .title { color:#EEE;}
 #tbl1 .desc { color:#caccce;}
 #tbl1 .even { background-color: rgba(38, 179, 247, 0.5);}
@@ -156,13 +156,14 @@ body {background-image:none !important;}
 #end if
 
 #if $theme == "ui-darkness" or $theme == "vader"
+body {background-image:none !important;}
 
-#tbl1 .service { color:#fff; background-color: #8e8e8e;}
+.station { color:#fff; background-color: #8e8e8e;}
 #tbl1 .title { color:#EEE;}
 #tbl1 .desc { color:#caccce;}
 #tbl1 .even { background-color: rgba(142, 142, 142, 0.5);}
 #tbl1 .odd { background-color: rgba(142, 148, 142, 0.7);}
-#tbl1 .border { border-right: 1px solid #aaaaaa;}
+#tbl1 .border { border-right: 1px solid #aaa;}
 #tbl1 .timer { color: #f00; }
 #tbl1 .timer.disabled { color: #f80; }
 
@@ -171,6 +172,10 @@ body {background-image:none !important;}
 
 #navepg .plus { background-color: #8e8e8e;color: #fff;}
 #navepg .plus.selected { color: #555;}
+
+.ETVTAB tr {background-color: #222;}
+.esl1,.esl2 { color: #eee;}
+.ETV {background-color: #eee;}
 
 #end if
 
@@ -182,7 +187,6 @@ body {background-image:none !important;}
 .tm_row { background-color: rgba(227, 161, 161, 0.5);border: 1px solid #e3a1a1;}
 
 #end if
-
 
 
 #if $theme == "black-tie"
