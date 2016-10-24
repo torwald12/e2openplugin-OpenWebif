@@ -30,7 +30,7 @@
 				<button onclick="load_maincontent_spin('ajax/movies?dirname='+escape('$path'));">$dir</button>
 			#end for
 			#if $directory != '/'
-				<button><span style="color: red; font-weight: bold;">
+				<button class="ui-state-active"><span style="font-weight: bold;">
 					#echo $directory[0:-1].split("/")[-1]
 				</span></button>
 			#end if
@@ -63,9 +63,10 @@
 						#set $w = $movie.lastseen
 						#if $w > 0
 							#set $w = $w * 70 / 100
-							#set $size = str($w) + 'px'
-							<div class="mlp"><div class="mlpp" style="width:$size">
-							</div></div>
+							#set $size = str($w) + '%'
+							<div class="ui-progressbar ui-corner-all ui-widget ui-widget-content">
+								<div class="ui-progressbar-value ui-corner-left ui-widget-header" style="width: $size;"></div>
+							</div>
 						#end if
 						<br>
 						#set $eventname_escaped =  $movie.eventname.replace("'", r"\'")
@@ -101,9 +102,10 @@
 
 <script type="text/javascript">
 
-\$('#moviebuttons').buttonset();
 \$( function() {
+	\$('#moviebuttons').buttonset();
 	MLHelper.Load($sort);
+	setTMHover();
 });
 
 #if $len($bookmarks)
