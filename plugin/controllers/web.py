@@ -14,7 +14,7 @@ from Plugins.Extensions.OpenWebif.__init__ import _
 from Components.config import config
 
 from models.info import getInfo, getCurrentTime , getStatusInfo, getFrontendStatus
-from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
+from models.services import getCurrentService, getBouquets, getServices, getSubServices, getChannels, getSatellites, getBouquetEpg, getBouquetNowNextEpg, getServicesNowNextEpg, getSearchEpg, getChannelEpg, getNowNextEpg, getSearchSimilarEpg, getAllServices, getPlayableServices, getPlayableService, getParentalControlList, getEvent, loadEpg, saveEpg
 from models.volume import getVolumeStatus, setVolumeUp, setVolumeDown, setVolumeMute, setVolume
 from models.audiotrack import getAudioTracks, setAudioTrack
 from models.control import zapService, remoteControl, setPowerState, getStandbyState
@@ -82,7 +82,7 @@ class WebController(BaseController):
 		self.suppresslog = True
 		return getStatusInfo(self)
 
-	def P_signal(self, request):
+	def P_tunersignal(self, request):
 		return getFrontendStatus(self.session)
 
 	def P_vol(self, request):
@@ -190,21 +190,36 @@ class WebController(BaseController):
 	def P_getcurrlocation(self, request):
 		return getCurrentLocation()
 
+#TODO: remove the setting for xmbc and use a extra url parameter 
+#the openwebif config setting is not the right position
+
 	def P_getallservices(self, request):
+		self.isGZ=True
 		type = "tv"
 		if "type" in request.args.keys():
 			type = "radio"
+# NEW : use url parameter instead of setting
+		if "renameserviceforxmbc" in request.args.keys():
+			bouquets = getAllServices(type)
+			count = 0
+			for bouquet in bouquets["services"]:
+				for service in bouquet["subservices"]:
+					service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
+					count += 1
+			return bouquets
+		
+# TODO : remove this if the setting is removed
 		if not config.OpenWebif.xbmcservices.value:
 			return getAllServices(type)
 
+# TODO : remove this if the setting is removed
 		# rename services for xbmc
-		bouquets = getAllServices()
+		bouquets = getAllServices(type)
 		count = 0
 		for bouquet in bouquets["services"]:
 			for service in bouquet["subservices"]:
 				service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
 				count += 1
-		self.isGZ=True
 		return bouquets
 
 	def P_getservices(self, request):
@@ -313,6 +328,7 @@ class WebController(BaseController):
 		return getMovieList(dirname, tag, request.args)
 	
 	def P_fullmovielist(self, request):
+		self.isGZ=True
 		return getAllMovies()
 
 	def P_movielisthtml(self, request):
@@ -751,6 +767,14 @@ class WebController(BaseController):
 		info = getCurrentService(self.session)
 		ret = getBouquetNowNextEpg(request.args["bRef"][0], -1)
 		ret["info"]=info
+		return ret
+
+	def P_epgservicelistnownext(self, request):
+		res = self.testMandatoryArguments(request, ["sList"])
+		if res:
+			return res
+		self.isGZ=True
+		ret = getServicesNowNextEpg(request.args["sList"][0])
 		return ret
 
 	def P_epgsearch(self, request):

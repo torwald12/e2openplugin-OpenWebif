@@ -13,6 +13,7 @@ from Tools.Directories import fileExists
 from Components.Sources.ServiceList import ServiceList
 from Components.ParentalControl import parentalControl
 from Components.config import config
+from Components.NimManager import nimmanager
 from ServiceReference import ServiceReference
 from Screens.ChannelSelection import service_types_tv, service_types_radio, FLAG_SERVICE_NEW_FOUND
 from enigma import eServiceCenter, eServiceReference, iServiceInformation, eEPGCache, getBestPlayableServiceReference
@@ -30,6 +31,11 @@ def filterName(name):
 	if name is not None:
 		name = name.replace('\xc2\x86', '').replace('\xc2\x87', '')
 	return name
+
+def convertDesc(val):
+	if val is not None:
+		return unicode(val,'utf_8', errors='ignore').encode('utf_8', 'ignore')
+	return val
 
 def getServiceInfoString(info, what):
 	v = info.getInfo(what)
@@ -84,8 +90,8 @@ def getCurrentService(session):
 
 def getCurrentFullInfo(session):
 	now = next = {}
-
 	inf = getCurrentService(session)
+	inf['tuners'] = list(map(chr, range(65,65+nimmanager.getSlotCount()))) 
 
 	try:
 		info = session.nav.getCurrentService().info()
@@ -375,6 +381,7 @@ def getServices(sRef, showAll = True, showHidden = False):
 			if showAll or st == 0:
 				service = {}
 				service['servicereference'] = unicode(sitem[0], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
+				service['program'] = int(service['servicereference'].split(':')[3], 16)
 				service['servicename'] = unicode(sitem[1], 'utf_8', errors='ignore').encode('utf_8', 'ignore')
 				services.append(service)
 
@@ -479,8 +486,8 @@ def getEvent(ref, idev):
 		info['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
 		info['duration'] = event[2]
 		info['title'] = filterName(event[3])
-		info['shortdesc'] = event[4]
-		info['longdesc'] = event[5]
+		info['shortdesc'] = convertDesc(event[4])
+		info['longdesc'] = convertDesc(event[5])
 		info['channel'] = filterName(event[6])
 		info['sref'] = event[7]
 		break;
@@ -513,8 +520,8 @@ def getChannelEpg(ref, begintime=-1, endtime=-1):
 					ev['duration_sec'] = event[2]
 					ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
 					ev['title'] = filterName(event[3])
-					ev['shortdesc'] = event[4]
-					ev['longdesc'] = event[5]
+					ev['shortdesc'] = convertDesc(event[4])
+					ev['longdesc'] = convertDesc(event[5])
 					ev['sref'] = ref
 					ev['sname'] = filterName(event[6])
 					ev['tleft'] = int (((event[1] + event[2]) - event[7]) / 60)
@@ -572,8 +579,41 @@ def getBouquetEpg(ref, begintime=-1, endtime=None):
 			ev['begin_timestamp'] = event[1]
 			ev['duration_sec'] = event[2]
 			ev['title'] = event[4]
-			ev['shortdesc'] = event[5]
-			ev['longdesc'] = event[6]
+			ev['shortdesc'] = convertDesc(event[5])
+			ev['longdesc'] = convertDesc(event[6])
+			ev['sref'] = event[7]
+			ev['sname'] = filterName(event[8])
+			ev['now_timestamp'] = event[3]
+			ret.append(ev)
+
+	return { "events": ret, "result": True }
+
+def getServicesNowNextEpg(sList):
+	ret = []
+	if not sList:
+		return { "events": ret, "result": False }
+
+	sRefList = sList.split(",")
+	search = ['IBDCTSERNX']
+	for service in sRefList:
+		search.append((service, 0, -1))
+		search.append((service, 1, -1))
+
+	epgcache = eEPGCache.getInstance()
+	events = epgcache.lookupEvent(search)
+	if events is not None:
+		for event in events:
+			ev = {}
+			ev['id'] = event[0]
+			ev['begin_timestamp'] = event[1]
+			ev['duration_sec'] = event[2]
+			ev['title'] = event[4]
+			ev['shortdesc'] = convertDesc(event[5])
+			ev['longdesc'] = convertDesc(event[6])
+			#if event[7] is not None:
+			#	achannels = GetWithAlternative(event[7], False)
+			#	if achannels:
+			#		ev['asrefs'] = achannels
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[8])
 			ev['now_timestamp'] = event[3]
@@ -606,8 +646,8 @@ def getBouquetNowNextEpg(ref, servicetype):
 			ev['begin_timestamp'] = event[1]
 			ev['duration_sec'] = event[2]
 			ev['title'] = event[4]
-			ev['shortdesc'] = event[5]
-			ev['longdesc'] = event[6]
+			ev['shortdesc'] = convertDesc(event[5])
+			ev['longdesc'] = convertDesc(event[6])
 			if event[7] is not None:
 				achannels = GetWithAlternative(event[7], False)
 				if achannels:
@@ -632,8 +672,8 @@ def getNowNextEpg(ref, servicetype):
 				ev['begin_timestamp'] = event[1]
 				ev['duration_sec'] = event[2]
 				ev['title'] = event[4]
-				ev['shortdesc'] = event[5]
-				ev['longdesc'] = event[6]
+				ev['shortdesc'] = convertDesc(event[5])
+				ev['longdesc'] = convertDesc(event[6])
 				ev['sref'] = event[7]
 				ev['sname'] = filterName(event[8])
 				ev['now_timestamp'] = event[3]
@@ -677,8 +717,8 @@ def getSearchEpg(sstr, endtime=None):
 			ev['duration'] = int(event[2] / 60)
 			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
 			ev['title'] = filterName(event[3])
-			ev['shortdesc'] = event[4]
-			ev['longdesc'] = event[5]
+			ev['shortdesc'] = convertDesc(event[4])
+			ev['longdesc'] = convertDesc(event[5])
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[6])
 			ev['picon'] = getPicon(event[7])
@@ -709,8 +749,8 @@ def getSearchSimilarEpg(ref, eventid):
 			ev['duration'] = int(event[2] / 60)
 			ev['end'] = strftime("%H:%M",(localtime(event[1] + event[2])))
 			ev['title'] = event[3]
-			ev['shortdesc'] = event[4]
-			ev['longdesc'] = event[5]
+			ev['shortdesc'] = convertDesc(event[4])
+			ev['longdesc'] = convertDesc(event[5])
 			ev['sref'] = event[7]
 			ev['sname'] = filterName(event[6])
 			ev['picon'] = getPicon(event[7])
@@ -766,13 +806,25 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 			if not timerlist.has_key(str(timer.service_ref)):
 				timerlist[str(timer.service_ref)] = []
 			timerlist[str(timer.service_ref)].append(timer)
+		
+		if begintime == -1:
+			# If no start time is requested, use current time as start time and extend
+			# show all events until 6:00 next day
+			bt = localtime()
+			offset = mktime( (bt.tm_year, bt.tm_mon, bt.tm_mday, bt.tm_hour - bt.tm_hour%2, 0,0, -1,-1,-1) )
+			lastevent = mktime( (bt.tm_year, bt.tm_mon, bt.tm_mday, 23, 59, 0, -1, -1, -1) ) + 6*3600
+		else:
+			# If a start time is requested, show all events in a 24 hour frame
+			bt = localtime(begintime)
+			offset = mktime( (bt.tm_year, bt.tm_mon, bt.tm_mday, bt.tm_hour - bt.tm_hour%2, 0,0, -1,-1,-1) )
+			lastevent = offset + 86399
 
 		for event in events:
 			ev = {}
 			ev['id'] = event[0]
 			ev['begin_timestamp'] = event[1]
 			ev['title'] = event[2]
-			ev['shortdesc'] = event[3]
+			ev['shortdesc'] = convertDesc(event[3])
 			ev['ref'] = event[4]
 			ev['timerStatus'] = getTimerEventStatus(event)
 
@@ -780,14 +832,6 @@ def getMultiEpg(self, ref, begintime=-1, endtime=None):
 			if not ret.has_key(channel):
 				ret[channel] = [ [], [], [], [], [], [], [], [], [], [], [], [] ]
 				picons[channel] = getPicon(event[4])
-
-			if offset is None:
-				bt = event[1]
-				if begintime > event[1]:
-					bt = begintime
-				et = localtime(bt)
-				offset = mktime( (et.tm_year, et.tm_mon, et.tm_mday, 0, 0, 0, -1, -1, -1) )
-				lastevent = mktime( (et.tm_year, et.tm_mon, et.tm_mday, 23, 59, 0, -1, -1, -1) )
 
 			slot = int((event[1]-offset) / 7200)
 			if slot > -1 and slot < 12 and event[1] < lastevent:

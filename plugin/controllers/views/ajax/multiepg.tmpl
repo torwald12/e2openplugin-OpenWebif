@@ -5,6 +5,7 @@
 <style>
 	table { font-family: Verdana; font-size: 11px; }
 	tr { vertical-align: top }
+	.float { float:left }
 	.service { font-weight: bold; font-size: 12px; color:#fff; background-color: #1c47ae; line-height:30px; padding: 3px; white-space: nowrap; overflow: hidden; width: 184px}
 	.service img { width:50px; height:30px; float:left; margin-right:10px; }
 	.title { font-weight: bold; color: #061c37; }
@@ -19,35 +20,28 @@
 	.timer { color: #f00; font-weight: bold; font-size: 10px; }
 	.timer.disabled { color: #f80; }
 	#eventdescription { width: 375px; height: auto; position: fixed; top: 205px; left: 350px; z-index: 1000; display: none; overflow: auto; }
-.fht-table,.fht-table thead,.fht-table tfoot,.fht-table tbody,.fht-table tr,.fht-table th,.fht-table td{font-size:100%;font:inherit;vertical-align:top;margin:0;padding:0}
-.fht-table{border-collapse:collapse;border-spacing:0}
-.fht-table-wrapper,.fht-table-wrapper .fht-thead,.fht-table-wrapper .fht-tfoot,.fht-table-wrapper .fht-fixed-column .fht-tbody,.fht-table-wrapper .fht-fixed-body .fht-tbody,.fht-table-wrapper .fht-tbody{overflow:hidden;position:relative}
-.fht-table-wrapper .fht-fixed-body .fht-tbody,.fht-table-wrapper .fht-tbody{overflow:auto}
-.fht-table-wrapper .fht-table .fht-cell{overflow:hidden;height:1px}
-.fht-table-wrapper .fht-fixed-column,.fht-table-wrapper .fht-fixed-body{top:0;left:0;position:absolute}
-.fht-table-wrapper .fht-fixed-column{z-index:1}
-}
+	#navepg { margin-bottom: 1px; }
+	#tbl1 thead tr, #tbl1 tfoot tr { display: block; width: 100%; }
+	#tbl1 tbody { width: 100%; height: 100%; overflow-y: auto; display: block; }
+	.wrapper { overflow-x: auto; width: 100%; }
+	td.border { width: 190px; }
 </style>
 
-<table style="margin:0">
-<tr>
+<div id="navepg">
 #for $slot in range(0,7)
-    <td class="plus #if $slot==$day then 'selected' else '' #" js:day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</td>
+    <div class="float plus #if $slot==$day then 'selected' else '' #" js:day="$(slot)">$tstrings[("day_" + (time.strftime("%w", time.localtime(time.time()+86400*slot))))]</div>
 #end for
-</tr>
-</table>
+	<br clear="all">
 
-<table>
-<tr>
 #for $bq in $bouquets
-<td class="bq #if $bq[0]==$bref then 'selected' else '' #" js:ref="$quote($bq[0])">$bq[1]</td>
+	<div class="float bq #if $bq[0]==$bref then 'selected' else '' #" js:ref="$quote($bq[0])">$bq[1]</div>
 #end for
-</tr>
-</table>
+<br clear="all">
+</div>
 
 #set $renderEventBlock = $renderEvtBlock()
-<table cellpadding="0" cellspacing="0" id="TBL1">
-#block channelsInBouquet
+<div class="wrapper">
+<table border="0" cellpadding="0" cellspacing="0" width="100%" id="tbl1">
 <thead>
 <tr>
 	#for $sname, $eventlist in $events.iteritems()
@@ -55,8 +49,7 @@
 	#end for
 </tr>
 </thead>
-#end block
-<tbody>
+<tbody id="tbl1body">
 	#set hasEvents = False
 	#for $slot in range(0,12)
 <tr class="$(slot%2 and 'odd' or 'even')">
@@ -71,22 +64,47 @@
 </tr>
 	#end for
 </tbody>
+<tfoot>
+<tr>
+	#for $sname, $eventlist in $events.iteritems()
+	<td class="border"><div class="service"><img src="$(picons[$sname])" /> $sname</div></td>
+	#end for
+</tr>
+</tfoot>
 </table>
+</div>
 <div id="eventdescription"></div>
 
 <script>
 var picons = $dumps($picons);
 var reloadTimers = false;
+function getScrollBarWidth () {
+    var \$outer = \$('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body'),
+        widthWithScroll = \$('<div>').css({width: '100%'}).appendTo(\$outer).outerWidth();
+    \$outer.remove();
+    return 100 - widthWithScroll;
+}
+var scrollBarWidth=getScrollBarWidth();
+function fixTableHeight() {
+    var addScrollBarWidth = scrollBarWidth;
+    if (\$('#tbl1').width() <= \$("#tvcontent").width()){
+        addScrollBarWidth = 0;
+    }
+    \$("#tbl1body").height( (\$("#tvcontent").height() - \$("#navepg").height() - 2*\$("#tbl1 thead").height() - addScrollBarWidth - 2) + "px");
+}
+fixTableHeight();
+\$(window).resize(function(){ fixTableHeight(); });
 \$(".bq").click(function() {
-    var id = \$(this).attr("js:ref");
-    \$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id);
+	var id = \$(this).attr("js:ref");
+	\$("#tvcontent").html(loadspinner).load('ajax/multiepg?bref='+id);
+	if(typeof(Storage) !== "undefined") { localStorage.lastmbq = id; }
 });
 \$(".event").click(function() {
-    var id = \$(this).attr("js:id");
-    var ref = \$(this).attr("js:ref");
-    \$("#eventdescription").load('ajax/event?idev='+id+'&sref='+escape(ref), function() { 
+	var id = \$(this).attr("js:id");
+	var ref = \$(this).attr("js:ref");
+	\$("#eventdescription").load('ajax/event?idev='+id+'&sref='+escape(ref), function() { 
 		\$("#eventdescription").show(200).draggable( { handle: ".handle" } );
-    });
+	});
 });
 \$(".plus").click(function() {
 	var day = \$(this).attr("js:day");
@@ -94,17 +112,5 @@ var reloadTimers = false;
 });
 if(!timeredit_initialized)
 	\$('#editTimerForm').load('/ajax/edittimer');
-</script>
-<script type="text/javascript" src="js/jquery.fixedheadertable.min.js"></script>
-
-<script>
-\$(function() { 
-\$('#TBL1').fixedHeaderTable({ 
-	footer: true,
-	cloneHeadToFoot: true,
-	altClass: 'odd',
-	autoShow: true
-});
-});
 </script>
 

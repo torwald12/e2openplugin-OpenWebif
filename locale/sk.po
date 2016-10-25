@@ -1,89 +1,89 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenWebif\n"
-"POT-Creation-Date: 2016-04-30 20:14+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-30 15:05+0200\n"
 "PO-Revision-Date: \n"
-"Last-Translator: plnick\n"
+"Last-Translator: Nicker <nickersk@gmail.com>\n"
 "Language-Team: \n"
-"Language: de\n"
+"Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.6\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: ../plugin\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: ../plugin/controllers/BouquetEditor.py:82
 msgid "one two three four unknown command"
-msgstr ""
+msgstr "jeden dva tri štyri neznámy príkaz"
 
 #: ../plugin/controllers/BouquetEditor.py:88
 #: ../plugin/controllers/BouquetEditor.py:149
 #: ../plugin/controllers/BouquetEditor.py:194
 msgid "No bouquet name given!"
-msgstr ""
+msgstr "Nie je uvedený názov prehľadu!"
 
 #: ../plugin/controllers/BouquetEditor.py:118
 #, python-format
 msgid "Bouquet %s created."
-msgstr ""
+msgstr "Prehľad %s vytvorený."
 
 #: ../plugin/controllers/BouquetEditor.py:120
 msgid "Get mutable list for new created bouquet failed!"
-msgstr ""
+msgstr "Získanie premenlivého zoznamu pre novovytvorený prehľad zlyhalo!"
 
 #: ../plugin/controllers/BouquetEditor.py:123
 #, python-format
 msgid "Bouquet %s already exists."
-msgstr ""
+msgstr "Prehľad %s už existuje."
 
 #: ../plugin/controllers/BouquetEditor.py:125
 #: ../plugin/controllers/BouquetEditor.py:435
 msgid "Bouquetlist is not editable!"
-msgstr ""
+msgstr "Zoznam prehľadov sa nedá upraviť!"
 
 #: ../plugin/controllers/BouquetEditor.py:127
 msgid "Multi-Bouquet is not enabled!"
-msgstr ""
+msgstr "Multi-prehľad nie je zapnutý!"
 
 #: ../plugin/controllers/BouquetEditor.py:133
 msgid "No provider given!"
-msgstr ""
+msgstr "Nebol zadaný poskytovateľ!"
 
 #: ../plugin/controllers/BouquetEditor.py:180
 #, python-format
 msgid "Bouquet %s removed failed."
-msgstr ""
+msgstr "Odstránenie prehľadu %s zlyhalo."
 
 #: ../plugin/controllers/BouquetEditor.py:182
 #, python-format
 msgid "Bouquet %s removed failed, sevicerefence or mutable list is not valid."
-msgstr ""
+msgstr "Odstránenie prehľadu %s zlyhalo, zoznam referencií je neplatný."
 
 #: ../plugin/controllers/BouquetEditor.py:186
 #, python-format
 msgid "Bouquet %s deleted."
-msgstr ""
+msgstr "Prehľad %s zmazaný."
 
 #: ../plugin/controllers/BouquetEditor.py:188
 #, python-format
 msgid "Error: Bouquet %s could not deleted, OSError."
-msgstr ""
+msgstr "Chyba: Prehľad  %s sa nedá zmazať, OSerror."
 
 #: ../plugin/controllers/BouquetEditor.py:204
 #: ../plugin/controllers/BouquetEditor.py:261
 msgid "No position given!"
-msgstr ""
+msgstr "Nebola zadaná pozícia!"
 
 #: ../plugin/controllers/BouquetEditor.py:211
 #, python-format
 msgid "Bouquet %s moved."
-msgstr ""
+msgstr "Prehľad %s presunutý."
 
 #: ../plugin/controllers/BouquetEditor.py:213
 #, python-format
 msgid "Bouquet %s can not be moved."
-msgstr ""
+msgstr "Prehľad %s nemôže byť presunutý."
 
 #: ../plugin/controllers/BouquetEditor.py:219
 #: ../plugin/controllers/BouquetEditor.py:249
@@ -91,7 +91,7 @@ msgstr ""
 #: ../plugin/controllers/BouquetEditor.py:309
 #: ../plugin/controllers/BouquetEditor.py:455
 msgid "No bouquet given!"
-msgstr ""
+msgstr "Nie je uvedený prehľad!"
 
 #: ../plugin/controllers/BouquetEditor.py:225
 #: ../plugin/controllers/BouquetEditor.py:255
@@ -101,520 +101,522 @@ msgstr ""
 #: ../plugin/controllers/BouquetEditor.py:461
 #: ../plugin/controllers/BouquetEditor.py:498
 msgid "No service given!"
-msgstr ""
+msgstr "Nie je uvedená stanica!"
 
 #: ../plugin/controllers/BouquetEditor.py:234
 #, python-format
 msgid "Service %s removed."
-msgstr ""
+msgstr "Stanica %s zmazaná."
 
 #: ../plugin/controllers/BouquetEditor.py:242
 #, python-format
 msgid "Service %s removed from bouquet %s."
-msgstr ""
+msgstr "Stanica %s odstránená z prehľadu %s."
 
 #: ../plugin/controllers/BouquetEditor.py:243
 #, python-format
 msgid "Service %s can not be removed."
-msgstr ""
+msgstr "Stanica %s sa nedá odstrániť."
 
 #: ../plugin/controllers/BouquetEditor.py:268
 #, python-format
 msgid "Service %s moved."
-msgstr ""
+msgstr "Stanica %s presunutá."
 
 #: ../plugin/controllers/BouquetEditor.py:269
 msgid "Service can not be moved."
-msgstr ""
+msgstr "Stanica sa nedá presunúť"
 
 #: ../plugin/controllers/BouquetEditor.py:299
 #, python-format
 msgid "Service %s added."
-msgstr ""
+msgstr "Stanica %s pridaná."
 
 #: ../plugin/controllers/BouquetEditor.py:302
 #, python-format
 msgid "Service %s already exists in bouquet %s."
-msgstr ""
+msgstr "Stanica %s už existuje v prehľade %s."
 
 #: ../plugin/controllers/BouquetEditor.py:303
 msgid "This service can not be added."
-msgstr ""
+msgstr "Táto stanica sa nedá pridať."
 
 #: ../plugin/controllers/BouquetEditor.py:315
 msgid "No marker-name given!"
-msgstr ""
+msgstr "Nie je uvedený názov značky!"
 
 #: ../plugin/controllers/BouquetEditor.py:329
 msgid "Marker added."
-msgstr ""
+msgstr "Značka pridaná."
 
 #: ../plugin/controllers/BouquetEditor.py:331
 msgid "Internal error!"
-msgstr ""
+msgstr "Vnútorná chyba!"
 
 #: ../plugin/controllers/BouquetEditor.py:345
 msgid "No new servicename given!"
-msgstr ""
+msgstr "Nie je zadaný nový názov stanice!"
 
 #: ../plugin/controllers/BouquetEditor.py:369
 msgid "Bouquet renamed successfully."
-msgstr ""
+msgstr "Prehľad úspešne premenovaný."
 
 #: ../plugin/controllers/BouquetEditor.py:385
 msgid "Service renamed successfully."
-msgstr ""
+msgstr "Stanica úspešne premenovaná."
 
 #: ../plugin/controllers/BouquetEditor.py:386
 msgid "Service can not be renamed."
-msgstr ""
+msgstr "Stanica sa nedá premenovať."
 
 #: ../plugin/controllers/BouquetEditor.py:400
 msgid "No current service given!"
-msgstr ""
+msgstr "Nezadaná aktuálna stanica!"
 
 #: ../plugin/controllers/BouquetEditor.py:431
 msgid "Get mutable list for new created alternative failed!"
-msgstr ""
+msgstr "Získanie premenlivého zoznamu pre novovytvorenú alternatívu zlyhalo!"
 
 #: ../plugin/controllers/BouquetEditor.py:433
 #, python-format
 msgid "Alternative %s created failed."
-msgstr ""
+msgstr "Vytváranie altern. %s zlyhalo."
 
 #: ../plugin/controllers/BouquetEditor.py:447
 #, python-format
 msgid "Added %s to alternative service %s."
-msgstr ""
+msgstr "%s pridaná k alternatívam stanice %s."
 
 #: ../plugin/controllers/BouquetEditor.py:478
 msgid "Service is not an alternative."
-msgstr ""
+msgstr "Stanica nie je alternatívnou."
 
 #: ../plugin/controllers/BouquetEditor.py:486
 msgid "All alternative services deleted."
-msgstr ""
+msgstr "Všetky alternatívne stanice odstránené."
 
 #: ../plugin/controllers/BouquetEditor.py:492
 msgid "Parent Control is not activated."
-msgstr ""
+msgstr "Rodičovská kontrola nie je aktivovaná."
 
 #: ../plugin/controllers/BouquetEditor.py:505
 msgid "No Parent Control Setup Pin given!"
-msgstr ""
+msgstr "Nebol zadaný PIN rodičovskej kontroly!"
 
 #: ../plugin/controllers/BouquetEditor.py:509
 #: ../plugin/controllers/BouquetEditor.py:511
 msgid "Parent Control Setup Pin is wrong!"
-msgstr ""
+msgstr "Zadaný PIN rodičovskej kontroly je nesprávny!"
 
 #: ../plugin/controllers/BouquetEditor.py:526
 #, python-format
 msgid "Service %s is locked."
-msgstr ""
+msgstr "Služba %s je zamknutá."
 
 #: ../plugin/controllers/BouquetEditor.py:528
 #, python-format
 msgid "Bouquet %s is locked."
-msgstr ""
+msgstr "Prehľad %s je zamknutý."
 
 #: ../plugin/controllers/BouquetEditor.py:530
 #, python-format
 msgid "%s %s is locked."
-msgstr ""
+msgstr "%s %s je zamknutý."
 
 #: ../plugin/controllers/BouquetEditor.py:534
 #, python-format
 msgid "Service %s is unlocked."
-msgstr ""
+msgstr "Služba %s nie je zamknutá."
 
 #: ../plugin/controllers/BouquetEditor.py:536
 #, python-format
 msgid "Bouquet %s is unlocked."
-msgstr ""
+msgstr "Prehľad %s nie je zamknutý."
 
 #: ../plugin/controllers/BouquetEditor.py:573
 #, python-format
 msgid "Error while preparing backup file, %s does not exists."
-msgstr ""
+msgstr "Chyba pri príprave záložného súboru, %s neexistuje."
 
 #: ../plugin/controllers/BouquetEditor.py:579
 msgid "Error while preparing backup file."
-msgstr ""
+msgstr "Chyba pri príprave záložného súboru."
 
 #: ../plugin/controllers/BouquetEditor.py:630
 msgid "Bouquet-settings were restored successfully"
-msgstr ""
+msgstr "Obnovenie nastavení prehľadu bolo úspešné"
 
 #: ../plugin/controllers/BouquetEditor.py:632
 #, python-format
 msgid "Error, %s was not created with WebBouquetEditor..."
-msgstr ""
+msgstr "Chyba, %s nebol vytvorený web editorom prehľadov..."
 
 #: ../plugin/controllers/BouquetEditor.py:634
 #, python-format
 msgid "Error, %s does not exists, restore is not possible..."
-msgstr ""
+msgstr "Chyba %s neexistuje, obnovenie nie je možné ..."
 
 #: ../plugin/controllers/base.py:221 ../plugin/local.py:181
 #: ../plugin/local.py:325
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr "Nastavenia"
 
 #: ../plugin/controllers/base.py:236
 msgid "LCD4Linux Setup"
-msgstr "LCD4Linux-Einstellungen"
+msgstr "Nastavenie LCD4Linux"
 
 #: ../plugin/controllers/base.py:240
 msgid "AutoTimer"
-msgstr ""
+msgstr "Automatický časovač"
 
 #: ../plugin/controllers/base.py:244
 msgid "BouquetEditor"
-msgstr "Bouquet-Editor"
+msgstr "Editor prehľadov"
 
 #: ../plugin/controllers/base.py:248
 msgid "EPGRefresh"
-msgstr ""
+msgstr "obnovovanie EPG"
 
 #: ../plugin/controllers/models/info.py:71 ../plugin/local.py:115
 msgid "IPv4-only kernel"
-msgstr "Kernel ohne IPv6-Unterstützung"
+msgstr "Jadro len IPv4"
 
 #: ../plugin/controllers/models/info.py:75 ../plugin/local.py:117
 msgid "IPv4-only Python/Twisted"
-msgstr "Python/Twisted ohne IPv6-Unterstützung"
+msgstr "Python/Twisted len IPv4"
 
 #: ../plugin/controllers/models/info.py:104 ../plugin/local.py:116
 msgid "none/IPv4-only network"
-msgstr "keine/reines IPv4-Netzwerk"
+msgstr "žiadna/len IPv4 sieť"
 
 #: ../plugin/controllers/models/message.py:33
 msgid "Message sent successfully!"
-msgstr "Nachricht erfolgreich verschickt!"
+msgstr "Správa úspešne odoslaná!"
 
 #: ../plugin/controllers/models/message.py:43
 msgid "No answer in time"
-msgstr "Keine rechtzeitige Antwort"
+msgstr "Žiadna odpoveď načas"
 
 #: ../plugin/controllers/models/message.py:48
 msgid "Answer is YES!"
-msgstr "Antwort lautet JA!"
+msgstr "Odpoveď je ÁNO!"
 
 #: ../plugin/controllers/models/message.py:48
 msgid "Answer is NO!"
-msgstr "Antwort lautet NEIN!"
+msgstr "Odpoveď je NIE!"
 
 #: ../plugin/controllers/models/services.py:251
 msgid "New"
-msgstr "Neu"
+msgstr "Nový"
 
 #: ../plugin/controllers/models/services.py:253
 msgid "Services"
-msgstr "Sender"
+msgstr "Stanice"
 
 #: ../plugin/controllers/models/services.py:258
 msgid "Cable"
-msgstr "Kabel"
+msgstr "Káblové"
 
 #: ../plugin/controllers/models/services.py:260
 msgid "Terrestrial"
-msgstr "Terrestrisch"
+msgstr "Pozemné"
 
 #: ../plugin/controllers/models/services.py:264
 msgid "W"
-msgstr "W"
+msgstr "Z"
 
 #: ../plugin/controllers/models/services.py:266
 msgid "E"
-msgstr "O"
+msgstr "V"
 
 #: ../plugin/controllers/models/timers.py:172
 #, python-format
 msgid "Conflicting Timer(s) detected! %s"
-msgstr "Timerkonflikt(e) gefunden! %s"
+msgstr "Nájdené konfliktné časovače! %s"
 
 #: ../plugin/controllers/models/timers.py:188
 #, python-format
 msgid "Could not add timer '%s'!"
-msgstr "Timer '%s' konnte nicht zugefügt werden!"
+msgstr "Časovač '%s' sa nepodarilo pridať!"
 
 #: ../plugin/controllers/models/timers.py:193
 #, python-format
 msgid "Timer '%s' added"
-msgstr "Timer '%s' zugefügt"
+msgstr "Časovač '%s' pridaný"
 
 #: ../plugin/controllers/models/timers.py:201
 msgid "EventId not found"
-msgstr "EventId nicht gefunden"
+msgstr "Id relácie nenájdené"
 
 #: ../plugin/controllers/models/timers.py:272
 #, python-format
 msgid "Timer '%s' changed"
-msgstr "Timer '%s' geändert"
+msgstr "Časovač '%s' sa zmenil"
 
 #: ../plugin/controllers/models/timers.py:277
 #, python-format
 msgid "Timer '%s' not saved while Conflict"
-msgstr "Timer '%s' wegen Konflikt nicht gespeichert"
+msgstr "Časovač '%s' sa počas konfliktu neuložil"
 
 #: ../plugin/controllers/models/timers.py:282
 #, python-format
 msgid "Could not find timer '%s' with given start and end time!"
-msgstr "Timer '%s' mit angegebener Start-/Endzeit nicht gefunden!"
+msgstr "Nepodarilo sa nájsť časovač '%s' so zadaným časom začatia a ukončenia!"
 
 #: ../plugin/controllers/models/timers.py:294
 #, python-format
 msgid "The timer '%s' has been deleted successfully"
-msgstr "Timer '%s' erfolgreich gelöscht"
+msgstr "Časovač '%s' bol úspešne odstránený"
 
 #: ../plugin/controllers/models/timers.py:299
 #: ../plugin/controllers/models/timers.py:343
 msgid "No matching Timer found"
-msgstr "Kein entsprechender Timer gefunden"
+msgstr "Zhodný časovač sa nenašiel"
 
 #: ../plugin/controllers/models/timers.py:317
 #, python-format
 msgid "Timer '%s' not enabled while Conflict"
-msgstr ""
+msgstr "Časovač '%s' je počas konfliktu zakázaný"
 
 #: ../plugin/controllers/models/timers.py:323
 #, python-format
 msgid "Timer '%s' already exists!"
-msgstr ""
+msgstr "Časovač '%s 'už existuje!"
 
 #: ../plugin/controllers/models/timers.py:329
 #, python-format
 msgid "The timer '%s' now recorded! Not disabled!"
-msgstr ""
+msgstr "Časovač '%s' zaznamenaný! Nezakázaný!"
 
 #: ../plugin/controllers/models/timers.py:337
 #, python-format
 msgid "The timer '%s' has been %s successfully"
-msgstr "Timer '%s' wurde erfolgreich %s"
+msgstr "Časovač '%s' bol %s úspešne"
 
 #: ../plugin/controllers/models/timers.py:350
 msgid "List of Timers has been cleaned"
-msgstr "Timerliste wurde aufgeräumt"
+msgstr "Zoznam časovačov bol vyčistený"
 
 #: ../plugin/controllers/models/timers.py:357
 msgid "TimerList has been saved"
-msgstr "Timerliste wurde gespeichert"
+msgstr "Zoznam časovačov bol uložený"
 
 #: ../plugin/controllers/models/timers.py:372
 msgid "No event found! Not recording!"
-msgstr "Keine Sendung gefunden! Keine Aufnahme!"
+msgstr "Nenájdená žiadna relácia! Nenahráva sa!"
 
 #: ../plugin/controllers/models/timers.py:378
 msgid "Instant record for current Event started"
-msgstr "Sofortaufnahme für aktuelle Sendung gestartet"
+msgstr "Okamžitý záznam aktuálnej relácie začal"
 
 #: ../plugin/controllers/models/timers.py:387
 msgid "Infinite Instant recording started"
-msgstr "Unbegrenzte Sofortaufnahme gestartet"
+msgstr "Nekonečné okamžité nahrávanie začalo"
 
 #: ../plugin/controllers/models/timers.py:406
 msgid "Timer conflict detected! Not recording!"
-msgstr "Timerkonflikt gefunden! Keine Aufnahme!"
+msgstr "Bol zistený konflikt časovača! Nenahráva sa!"
 
 #: ../plugin/controllers/models/timers.py:480
 msgid "Missing requesteter: sRef"
-msgstr "Fehlende Angabe: sRef"
+msgstr "Chýba žiadateľ: sRef"
 
 #: ../plugin/controllers/models/timers.py:502
 #, python-format
 msgid "Unknown command: '%s'"
-msgstr "Unbekanntes Kommando: '%s'"
+msgstr "Neznámy príkaz: '%s'"
 
 #: ../plugin/controllers/models/timers.py:559
 msgid "PowerTimer feature not available"
-msgstr "PowerTimer-Funktion nicht verfügbar"
+msgstr "Časovač napájania nie je k dispozícii"
 
 #: ../plugin/controllers/models/timers.py:635
 #: ../plugin/controllers/models/timers.py:661
 msgid "Sleeptimer is enabled"
-msgstr "SleepTimer aktiviert"
+msgstr "Časovač uspania je povolený"
 
 #: ../plugin/controllers/models/timers.py:635
 #: ../plugin/controllers/models/timers.py:661
 msgid "Sleeptimer is disabled"
-msgstr "SleepTimer deaktiviert"
+msgstr "Časovač uspania je vypnutý"
 
 #: ../plugin/controllers/models/timers.py:640
 #: ../plugin/controllers/models/timers.py:667
 msgid "SleepTimer error"
-msgstr ""
+msgstr "Chyba časovača vypnutia"
 
 #: ../plugin/controllers/models/timers.py:679
 msgid "ERROR: Cannot set SleepTimer while device is in Standby-Mode"
-msgstr "FEHLER: SleepTimer im Standby nicht verfügbar"
+msgstr ""
+"Chyba: Nie je možné nastaviť automatické vypnutie, keď zariadenie je v "
+"pohotovostnom režime"
 
 #: ../plugin/controllers/models/timers.py:684
 #: ../plugin/controllers/models/timers.py:753
 #: ../plugin/controllers/models/timers.py:771
 msgid "Sleeptimer has been disabled"
-msgstr "SleepTimer wurde deaktiviert"
+msgstr "Časovač uspania bol vypnutý"
 
 #: ../plugin/controllers/models/timers.py:690
 #: ../plugin/controllers/models/timers.py:753
 #: ../plugin/controllers/models/timers.py:766
 #, python-format
 msgid "Sleeptimer set to %d minutes"
-msgstr "SleepTimer eingestellt auf %d Minuten"
+msgstr "Časovač uspania nastavený na %d minút"
 
 #: ../plugin/controllers/models/timers.py:695
 #: ../plugin/controllers/models/timers.py:776
 msgid "SleepTimer Error"
-msgstr ""
+msgstr "Sleeptimer chyba"
 
 #: ../plugin/controllers/models/timers.py:804
 msgid "Error parsing vps.xml"
-msgstr ""
+msgstr "Chyba pri analýze vps.xml"
 
 #: ../plugin/controllers/models/timers.py:809
 msgid "VPS plugin not found"
-msgstr ""
+msgstr "VPS plugin nebol nájdený"
 
 #: ../plugin/controllers/web.py:63
 #, python-format
 msgid "Missing mandatory parameter '%s'"
-msgstr "Der benötigte Parameter '%s' fehlt"
+msgstr "Chýba povinný parameter '%s'"
 
 #: ../plugin/controllers/web.py:69
 #, python-format
 msgid "The parameter '%s' can't be empty"
-msgstr "Der Parameter '%s' darf nicht leer sein"
+msgstr "Parameter '%s' nemôže byť prázdny"
 
 #: ../plugin/controllers/web.py:103
 #, python-format
 msgid "Wrong parameter format 'set=%s'. Use set=set15 "
-msgstr "Falsches Parameter-Format 'set=%s'. Korrekt: set=set15 "
+msgstr "Chybný formát parametra 'set =%s'. Použite set = set15 "
 
 #: ../plugin/controllers/web.py:108
 #, python-format
 msgid "Unknown Volume command %s"
-msgstr "Unbekannter Befehl %s für die Lautstärkesteuerung"
+msgstr "Neznámy príkaz hlasitosti %s"
 
 #: ../plugin/controllers/web.py:143
 msgid "The parameter 'command' must be a number"
-msgstr "Der Parameter 'command' muss eine Zahl sein"
+msgstr "Parameter \"príkaz\" musí byť číslo"
 
 #: ../plugin/controllers/web.py:304
 #, python-format
 msgid "type %s is not a number"
-msgstr "der Typ %s ist keine Zahl"
+msgstr "typ %s nie je číslo"
 
 #: ../plugin/local.py:5
 msgid "Mo"
-msgstr "Mo"
+msgstr "Po"
 
 #: ../plugin/local.py:6
 msgid "Tu"
-msgstr "Di"
+msgstr "Ut"
 
 #: ../plugin/local.py:7
 msgid "We"
-msgstr "Mi"
+msgstr "St"
 
 #: ../plugin/local.py:8
 msgid "Th"
-msgstr "Do"
+msgstr "Št"
 
 #: ../plugin/local.py:9
 msgid "Fr"
-msgstr "Fr"
+msgstr "Pi"
 
 #: ../plugin/local.py:10
 msgid "Sa"
-msgstr "Sa"
+msgstr "So"
 
 #: ../plugin/local.py:11
 msgid "Su"
-msgstr "So"
+msgstr "Ne"
 
 #: ../plugin/local.py:13
 msgid "Sun"
-msgstr "So"
+msgstr "Ned"
 
 #: ../plugin/local.py:14
 msgid "Mon"
-msgstr "Mo"
+msgstr "Pon"
 
 #: ../plugin/local.py:15
 msgid "Tue"
-msgstr "Di"
+msgstr "Uto"
 
 #: ../plugin/local.py:16
 msgid "Wed"
-msgstr "Mi"
+msgstr "Str"
 
 #: ../plugin/local.py:17
 msgid "Thu"
-msgstr "Do"
+msgstr "Štv"
 
 #: ../plugin/local.py:18
 msgid "Fri"
-msgstr "Fr"
+msgstr "Pia"
 
 #: ../plugin/local.py:19
 msgid "Sat"
-msgstr "Sa"
+msgstr "Sob"
 
 #: ../plugin/local.py:21
 msgid "Monday"
-msgstr "Montag"
+msgstr "Pondelok"
 
 #: ../plugin/local.py:22
 msgid "Tuesday"
-msgstr "Dienstag"
+msgstr "Utorok"
 
 #: ../plugin/local.py:23
 msgid "Wednesday"
-msgstr "Mittwoch"
+msgstr "Streda"
 
 #: ../plugin/local.py:24
 msgid "Thursday"
-msgstr "Donnerstag"
+msgstr "Štvrtok"
 
 #: ../plugin/local.py:25
 msgid "Friday"
-msgstr "Freitag"
+msgstr "Piatok"
 
 #: ../plugin/local.py:26
 msgid "Saturday"
-msgstr "Samstag"
+msgstr "Sobota"
 
 #: ../plugin/local.py:27
 msgid "Sunday"
-msgstr "Sonntag"
+msgstr "Nedeľa"
 
 #: ../plugin/local.py:29
 msgid "January"
-msgstr "Januar"
+msgstr "Január"
 
 #: ../plugin/local.py:30
 msgid "February"
-msgstr "Februar"
+msgstr "Február"
 
 #: ../plugin/local.py:31
 msgid "March"
-msgstr "März"
+msgstr "Marec"
 
 #: ../plugin/local.py:32
 msgid "April"
-msgstr "April"
+msgstr "Apríl"
 
 #: ../plugin/local.py:33
 msgid "May"
-msgstr "Mai"
+msgstr "Máj"
 
 #: ../plugin/local.py:34
 msgid "June"
-msgstr "Juni"
+msgstr "Jún"
 
 #: ../plugin/local.py:35
 msgid "July"
-msgstr "Juli"
+msgstr "Júl"
 
 #: ../plugin/local.py:36
 msgid "August"
@@ -626,7 +628,7 @@ msgstr "September"
 
 #: ../plugin/local.py:38
 msgid "October"
-msgstr "Oktober"
+msgstr "Október"
 
 #: ../plugin/local.py:39
 msgid "November"
@@ -634,27 +636,27 @@ msgstr "November"
 
 #: ../plugin/local.py:40
 msgid "December"
-msgstr "Dezember"
+msgstr "December"
 
 #: ../plugin/local.py:42
 msgid "About"
-msgstr "Über"
+msgstr "Informácie"
 
 #: ../plugin/local.py:43
 msgid "Add Timer"
-msgstr "Timer hinzufügen"
+msgstr "Pridať časovač"
 
 #: ../plugin/local.py:44
 msgid "Add AutoTimer"
-msgstr "AutoTimer anlegen"
+msgstr "Pridať automatický časovač"
 
 #: ../plugin/local.py:45
 msgid "Add Zap Timer"
-msgstr "Umschalttimer anlegen"
+msgstr "Pridať časovač prepnutia"
 
 #: ../plugin/local.py:46
 msgid "After Event"
-msgstr "Danach"
+msgstr "Po udalosti"
 
 #: ../plugin/local.py:47
 msgid "AGC"
@@ -662,27 +664,27 @@ msgstr "AGC"
 
 #: ../plugin/local.py:48 ../plugin/local.py:345
 msgid "All"
-msgstr "Alles"
+msgstr "Všetky"
 
 #: ../plugin/local.py:49
 msgid "All Channels"
-msgstr "Alle Sender"
+msgstr "Všetky stanice"
 
 #: ../plugin/local.py:50
 msgid "Authors"
-msgstr "Autoren"
+msgstr "Autori"
 
 #: ../plugin/local.py:51 ../plugin/local.py:344
 msgid "Auto"
-msgstr "Automatisch"
+msgstr "Auto"
 
 #: ../plugin/local.py:52
 msgid "Back"
-msgstr "Zurück"
+msgstr "Späť"
 
 #: ../plugin/local.py:53 ../plugin/local.py:352
 msgid "Begin"
-msgstr "Beginn"
+msgstr "Začať"
 
 #: ../plugin/local.py:54
 msgid "BER"
@@ -690,107 +692,107 @@ msgstr "BER"
 
 #: ../plugin/local.py:55 ../plugin/local.py:307
 msgid "Bouquets"
-msgstr "Favoriten"
+msgstr "Prehľady"
 
 #: ../plugin/local.py:56
 msgid "Box Info"
-msgstr "Receiver-Informationen"
+msgstr "O prijímači"
 
 #: ../plugin/local.py:57
 msgid "Box"
-msgstr "Receiver"
+msgstr "Prijímač"
 
 #: ../plugin/local.py:58
 msgid "Box Control"
-msgstr "Systemfunktionen"
+msgstr "Ovládanie prijímača"
 
 #: ../plugin/local.py:59
 msgid "Box Uptime"
-msgstr "Receiver-Laufzeit"
+msgstr "Doba prevádzky"
 
 #: ../plugin/local.py:60
 msgid "Brand"
-msgstr "Marke"
+msgstr "Značka"
 
 #: ../plugin/local.py:61 ../plugin/plugin.py:92
 msgid "Cancel"
-msgstr "Abbrechen"
+msgstr "Zrušiť"
 
 #: ../plugin/local.py:62
 msgid "Capacity"
-msgstr "Kapazität"
+msgstr "Kapacita"
 
 #: ../plugin/local.py:63
 msgid "Channel"
-msgstr "Kanal"
+msgstr "Stanica"
 
 #: ../plugin/local.py:64 ../plugin/local.py:305
 msgid "Channels"
-msgstr "Kanäle"
+msgstr "Stanice"
 
 #: ../plugin/local.py:65
 msgid "Chipset"
-msgstr "Chipsatz"
+msgstr "Čipset"
 
 #: ../plugin/local.py:66
 msgid "Cleanup Timers"
-msgstr "Timer aufräumen"
+msgstr "Vyčistenie časovačov"
 
 #: ../plugin/local.py:67
 msgid "Close"
-msgstr "Schließen"
+msgstr "Zatvoriť"
 
 #: ../plugin/local.py:68
 msgid "Contributors"
-msgstr "Mitwirkende"
+msgstr "Prispievatelia"
 
 #: ../plugin/local.py:69
 msgid "Control"
-msgstr "Steuerung"
+msgstr "Ovládanie"
 
 #: ../plugin/local.py:70
 msgid "Current"
-msgstr "Aktuell"
+msgstr "Teraz"
 
 #: ../plugin/local.py:71
 msgid "Current Event"
-msgstr "Aktuelle Sendung"
+msgstr "Aktuálna relácia"
 
 #: ../plugin/local.py:72
 msgid "Deep-Standby"
-msgstr "Ausschalten"
+msgstr "Hlboký spánok"
 
 #: ../plugin/local.py:73
 msgid "Default"
-msgstr "Standard"
+msgstr "Predvolené"
 
 #: ../plugin/local.py:74
 msgid "Delete Recording"
-msgstr "Aufnahme löschen"
+msgstr "Zmazať nahrávku"
 
 #: ../plugin/local.py:75
 msgid "Really delete the recording"
-msgstr "Soll die Aufnahme gelöscht werden"
+msgstr "Naozaj chcete zmazať nahrávku"
 
 #: ../plugin/local.py:76
 msgid "Delete Movie"
-msgstr ""
+msgstr "Zmazať film"
 
 #: ../plugin/local.py:77
 msgid "Really delete the movie"
-msgstr ""
+msgstr "Naozaj zmazať film"
 
 #: ../plugin/local.py:78
 msgid "Delete Timer"
-msgstr "Timer löschen"
+msgstr "Zmazať časovač"
 
 #: ../plugin/local.py:79
 msgid "Really delete the timer"
-msgstr "Soll der Timer gelöscht werden"
+msgstr "Naozaj vymazať časovač"
 
 #: ../plugin/local.py:80 ../plugin/local.py:253
 msgid "Description"
-msgstr "Beschreibung"
+msgstr "Popis"
 
 #: ../plugin/local.py:81
 msgid "DHCP"
@@ -798,11 +800,11 @@ msgstr "DHCP"
 
 #: ../plugin/local.py:82
 msgid "Disable Timer"
-msgstr "Timer deaktivieren"
+msgstr "Vypnúť časovač"
 
 #: ../plugin/local.py:83
 msgid "Distro"
-msgstr "Distribution"
+msgstr "Distribúcia"
 
 #: ../plugin/local.py:84
 msgid "Dolby"
@@ -810,47 +812,47 @@ msgstr "Dolby"
 
 #: ../plugin/local.py:85
 msgid "Done"
-msgstr "Fertig"
+msgstr "Hotovo"
 
 #: ../plugin/local.py:86
 msgid "Download"
-msgstr "Herunterladen von"
+msgstr "Stiahnuť"
 
 #: ../plugin/local.py:87
 msgid "Download Playlist for"
-msgstr "Herunterladen der Wiedergabeliste für"
+msgstr "Stiahnuť Playlist pre"
 
 #: ../plugin/local.py:88
 msgid "Driver date"
-msgstr "Treiberversion"
+msgstr "Dátum ovládačov"
 
 #: ../plugin/local.py:89
 msgid "Duration"
-msgstr "Dauer"
+msgstr "Trvanie"
 
 #: ../plugin/local.py:90
 msgid "Edit Timer"
-msgstr "Timer bearbeiten"
+msgstr "Upraviť časovač"
 
 #: ../plugin/local.py:91
 msgid "Enable Timer"
-msgstr "Timer aktivieren"
+msgstr "Zapnúť časovač"
 
 #: ../plugin/local.py:92
 msgid "Start"
-msgstr ""
+msgstr "Spustiť"
 
 #: ../plugin/local.py:93 ../plugin/local.py:353
 msgid "End"
-msgstr "Ende"
+msgstr "Koniec"
 
 #: ../plugin/local.py:94 ../plugin/local.py:252 ../plugin/local.py:350
 msgid "Enabled"
-msgstr "Aktiviert"
+msgstr "Povolené"
 
 #: ../plugin/local.py:95
 msgid "Encrypted"
-msgstr "Verschlüsselt"
+msgstr "Kódované"
 
 #: ../plugin/local.py:96
 msgid "EPG"
@@ -858,199 +860,199 @@ msgstr "EPG"
 
 #: ../plugin/local.py:97
 msgid "Epg Search"
-msgstr "EPG-Suche"
+msgstr "Hľadanie v EPG"
 
 #: ../plugin/local.py:98
 msgid "Include description"
-msgstr "Beschreibung einbeziehen"
+msgstr "Zahrnúť popis"
 
 #: ../plugin/local.py:99
 msgid "Error"
-msgstr "Fehler"
+msgstr "Chyba"
 
 #: ../plugin/local.py:100
 msgid "Every"
-msgstr "Jeden"
+msgstr "Každú"
 
 #: ../plugin/local.py:101
 msgid "Extras"
-msgstr "Extras"
+msgstr "Extra"
 
 #: ../plugin/local.py:102
 msgid "finished"
-msgstr "beendet"
+msgstr "Ukončené"
 
 #: ../plugin/local.py:103
 msgid "Firmware version"
-msgstr "Firmware-Version"
+msgstr "Verzia firmvéru"
 
 #: ../plugin/local.py:104
 msgid "Frontprocessor Version"
-msgstr "Frontprozessor-Version"
+msgstr "Verzia frontprocesora"
 
 #: ../plugin/local.py:105
 msgid "Free"
-msgstr "Frei"
+msgstr "Voľných"
 
 #: ../plugin/local.py:106
 msgid "Free Memory"
-msgstr "Freier Speicher"
+msgstr "Voľná pamäť"
 
 #: ../plugin/local.py:107
 msgid "Gateway"
-msgstr "Gateway"
+msgstr "Brána"
 
 #: ../plugin/local.py:108
 msgid "Grab Screenshot"
-msgstr "Bildschirmfoto"
+msgstr "Snímka obrazovky"
 
 #: ../plugin/local.py:109
 msgid "Gui version"
-msgstr "GUI-Version"
+msgstr "Verzia GUI"
 
 #: ../plugin/local.py:110
 msgid "Hide full remote"
-msgstr "Vollständige Fernbedienung ausblenden"
+msgstr "Skryť úplné diaľkové"
 
 #: ../plugin/local.py:111
 msgid "High Resolution"
-msgstr "Hohe Auflösung"
+msgstr "Vysoké rozlíšenie"
 
 #: ../plugin/local.py:112
 msgid "Hard disk model"
-msgstr "Festplattenmodell"
+msgstr "Model pevného disku"
 
 #: ../plugin/local.py:113
 msgid "Hour"
-msgstr "Stunde"
+msgstr "Hodina"
 
 #: ../plugin/local.py:114
 msgid "IPv4 address"
-msgstr "IPv4-Adresse"
+msgstr "IPv4 adresa"
 
 #: ../plugin/local.py:118
 msgid "IPv6 address(es)"
-msgstr "IPv6-Adresse(n)"
+msgstr "IPv6 adresa(y)"
 
 #: ../plugin/local.py:119
 msgid "Infos"
-msgstr "Informationen"
+msgstr "Informácie"
 
 #: ../plugin/local.py:120
 msgid "Instant Record"
-msgstr "Sofortaufnahme"
+msgstr "Okamžité nahrávanie"
 
 #: ../plugin/local.py:121
 msgid "Javascript Libraries"
-msgstr "Javascript-Bibliothek"
+msgstr "Knižnice JavaScript "
 
 #: ../plugin/local.py:122
 msgid "Just play"
-msgstr "Umschaltt."
+msgstr "Len prehrať"
 
 #: ../plugin/local.py:123
 msgid "Kernel version"
-msgstr "Kernelversion"
+msgstr "Verzia jadra"
 
 #: ../plugin/local.py:124
 msgid "LICENSE"
-msgstr "Lizenz"
+msgstr "Licencia"
 
 #: ../plugin/local.py:125
 msgid "loading"
-msgstr "lade"
+msgstr "načítava sa"
 
 #: ../plugin/local.py:126
 msgid "Location"
-msgstr "Ort"
+msgstr "Umiestnenie"
 
 #: ../plugin/local.py:127
 msgid "Locked"
-msgstr "Gesperrt"
+msgstr "Uzamknutý"
 
 #: ../plugin/local.py:128
 msgid "MAC address"
-msgstr "MAC-Adresse"
+msgstr "MAC adresa"
 
 #: ../plugin/local.py:129
 msgid "Main"
-msgstr "Hauptmenü"
+msgstr "Hlavné"
 
 #: ../plugin/local.py:130
 msgid "Minute"
-msgstr "Minute"
+msgstr "minúta"
 
 #: ../plugin/local.py:131
 msgid "Model"
-msgstr "Modell"
+msgstr "Model"
 
 #: ../plugin/local.py:132
 msgid "Movielist"
-msgstr "Aufnahmeliste"
+msgstr "Zoznam filmov"
 
 #: ../plugin/local.py:133
 msgid "Movies"
-msgstr "Aufnahmen"
+msgstr "Filmy"
 
 #: ../plugin/local.py:134
 msgid "MultiEPG"
-msgstr "Mehrfach-EPG"
+msgstr "MultiEPG"
 
 #: ../plugin/local.py:135
 msgid "Name"
-msgstr "Name"
+msgstr "Názov"
 
 #: ../plugin/local.py:136
 msgid "Namespace"
-msgstr "Namensraum"
+msgstr "Priestor pre názvy"
 
 #: ../plugin/local.py:137
 msgid "Network Interface"
-msgstr "Netzwerkschnittstelle"
+msgstr "Sietový adaptér"
 
 #: ../plugin/local.py:138
 msgid "no description available"
-msgstr "keine Beschreibung verfügbar"
+msgstr "popis nie je k dispozícii"
 
 #: ../plugin/local.py:139
 msgid "Sorry this page is not yet implemented"
-msgstr "Entschuldigung, diese Seite existiert noch nicht"
+msgstr "Ospravedlňujeme sa táto stránka ešte nie je implementovaná"
 
 #: ../plugin/local.py:140
 msgid "Nothing"
-msgstr "Nichts"
+msgstr "Nič"
 
 #: ../plugin/local.py:141
 msgid "Nothing playing."
-msgstr "Keine Wiedergabe"
+msgstr "Nič sa neprehráva."
 
 #: ../plugin/local.py:142
 msgid "Now"
-msgstr "Jetzt"
+msgstr "Teraz"
 
 #: ../plugin/local.py:143
 msgid "System OE"
-msgstr "OE-System"
+msgstr "Systém OE"
 
 #: ../plugin/local.py:144
 msgid "On"
-msgstr "Ein"
+msgstr "Zapnúť"
 
 #: ../plugin/local.py:145
 msgid "Open Source Web Interface for Linux set-top box"
-msgstr "Quelloffenes Webinterface für Linux-Receiver"
+msgstr "Open Source webové rozhranie pre Linux prijímače"
 
 #: ../plugin/local.py:146 ../plugin/plugin.py:110
 msgid "Show box name in header"
-msgstr "Boxnamen in der Kopfzeile anzeigen"
+msgstr "Zobraziť názov prijímača v záhlaví"
 
 #: ../plugin/local.py:147 ../plugin/plugin.py:112
 msgid "Use custom box name"
-msgstr "Eigenen Boxnamen verwenden"
+msgstr "Použiť vlastný názov prijímača"
 
 #: ../plugin/local.py:148 ../plugin/plugin.py:114
 msgid "Custom box name"
-msgstr "Eigener Boxname"
+msgstr "Vlastný názov prijímača"
 
 #: ../plugin/local.py:149
 msgid "OSD"
@@ -1058,156 +1060,156 @@ msgstr "OSD"
 
 #: ../plugin/local.py:150
 msgid "Open in new window"
-msgstr "In neuem Fenster öffnen"
+msgstr "Otvoriť v novom okne"
 
 #: ../plugin/local.py:151
 msgid "Playback"
-msgstr "Abspielen"
+msgstr "Prehrávanie"
 
 #: ../plugin/local.py:152
 msgid "Playlist"
-msgstr "Wiedergabeliste"
+msgstr "Zoznam prehrávania"
 
 #: ../plugin/local.py:153
 msgid "Power Control"
-msgstr "Ausschaltmenü"
+msgstr "Ovládanie napájania"
 
 #: ../plugin/local.py:154
 msgid "Provider"
-msgstr "Anbieter"
+msgstr "Poskytovateľ"
 
 #: ../plugin/local.py:155
 msgid "Providers"
-msgstr "Anbieter"
+msgstr "Poskytovatelia"
 
 #: ../plugin/local.py:156
 msgid "Radio"
-msgstr "Radio"
+msgstr "Rádio"
 
 #: ../plugin/local.py:157
 msgid "Reboot Box"
-msgstr "Receiver neustarten"
+msgstr "Reštartovať prijímač"
 
 #: ../plugin/local.py:158
 msgid "Recording Status"
-msgstr "Aufnahmestatus"
+msgstr "Stav nahrávania"
 
 #: ../plugin/local.py:159 ../plugin/local.py:342
 msgid "Refresh"
-msgstr "Aktualisieren"
+msgstr "Obnoviť"
 
 #: ../plugin/local.py:160
 msgid "Refresh automatically every"
-msgstr "Aktualisiere automatisch alle"
+msgstr "Automaticky obnoviť každých"
 
 #: ../plugin/local.py:161
 msgid "Refresh Timer"
-msgstr "Timer neu Laden"
+msgstr "Obnoviť časovač"
 
 #: ../plugin/local.py:162
 msgid "Remote"
-msgstr "Fernbedienung"
+msgstr "Diaľkové"
 
 #: ../plugin/local.py:163
 msgid "Rename Recording"
-msgstr "Aufnahme umbenennen"
+msgstr "Premenovať nahrávku"
 
 #: ../plugin/local.py:164
 msgid "Really rename the recording"
-msgstr ""
+msgstr "Naozaj premenovať nahrávku"
 
 #: ../plugin/local.py:165
 msgid "Repeated"
-msgstr "Wiederhole"
+msgstr "Opakované"
 
 #: ../plugin/local.py:166
 msgid "Restart GUI"
-msgstr "GUI neustarten"
+msgstr "Reštartovať GUI"
 
 #: ../plugin/local.py:167
 msgid "running"
-msgstr "laufend"
+msgstr "prebieha..."
 
 #: ../plugin/local.py:168
 msgid "Safe mode"
-msgstr "Sicherheitsmodus"
+msgstr "Bezpečný režim"
 
 #: ../plugin/local.py:169
 msgid "Satellites"
-msgstr "Satelliten"
+msgstr "Satelity"
 
 #: ../plugin/local.py:170
 msgid "Satfinder"
-msgstr "Satellitenfinder"
+msgstr "Hľadač satelitov"
 
 #: ../plugin/local.py:171 ../plugin/local.py:321 ../plugin/local.py:373
 #: ../plugin/plugin.py:93
 msgid "Save"
-msgstr "Speichern"
+msgstr "Uložiť"
 
 #: ../plugin/local.py:172
 msgid "Screenshot"
-msgstr "Bildschirmfoto"
+msgstr "Snímka obrazovky"
 
 #: ../plugin/local.py:173 ../plugin/local.py:379
 msgid "Search"
-msgstr "Suchen"
+msgstr "Hľadať"
 
 #: ../plugin/local.py:174
 msgid "Search IMDb"
-msgstr "Durchsuche IMDb"
+msgstr "Hľadať v IMDb"
 
 #: ../plugin/local.py:175
 msgid "Search KinoPoisk"
-msgstr ""
+msgstr "Vyhľadávanie KinoPoisk"
 
 #: ../plugin/local.py:176
 msgid "seconds"
-msgstr "Sekunden"
+msgstr "sekundy"
 
 #: ../plugin/local.py:177
 msgid "Send Message"
-msgstr "Nachricht senden"
+msgstr "Poslať správu"
 
 #: ../plugin/local.py:178
 msgid "Waiting for answer ..."
-msgstr "Erwarte Antwort ..."
+msgstr "Čakám na odpoveď..."
 
 #: ../plugin/local.py:179
 msgid "Send a Message"
-msgstr "Nachricht senden"
+msgstr "Poslať správu"
 
 #: ../plugin/local.py:180
 msgid "Service"
-msgstr "Kanal"
+msgstr "Stanica"
 
 #: ../plugin/local.py:182
 msgid "Bouquet Editor"
-msgstr "Bouquet-Editor"
+msgstr "Editor prehľadu"
 
 #: ../plugin/local.py:183
 msgid "(shift + click for long pressure)"
-msgstr "(Umschalttaste+Klick für langen Tastendruck)"
+msgstr "(dlhé pridržanie shift + klik)"
 
 #: ../plugin/local.py:184
 msgid "Show Full OpenWebif"
-msgstr "Desktop-Version OpenWebif"
+msgstr "Zobraziť úplný OpenWebif"
 
 #: ../plugin/local.py:185
 msgid "Show full remote"
-msgstr "Vollständige Fernbedienung einblenden"
+msgstr "Zobraziť úplné diaľkové"
 
 #: ../plugin/local.py:186
 msgid "Show EPG for"
-msgstr "Zeige EPG für"
+msgstr "Zobraziť EPG pre"
 
 #: ../plugin/local.py:187
 msgid "Shutdown"
-msgstr "Ausschalten"
+msgstr "Vypnúť"
 
 #: ../plugin/local.py:188
 msgid "Site and sources"
-msgstr "Webseite und Quellcode"
+msgstr "Stránky a zdroje"
 
 #: ../plugin/local.py:189
 msgid "SNR"
@@ -1215,23 +1217,23 @@ msgstr "SNR"
 
 #: ../plugin/local.py:190
 msgid "Software"
-msgstr "Software"
+msgstr "Softvér"
 
 #: ../plugin/local.py:191
 msgid "Standby"
-msgstr "Standby"
+msgstr "Pohotovostný režim"
 
 #: ../plugin/local.py:192
 msgid "Standby Toggle"
-msgstr "Standby (ein/aus)"
+msgstr "Pohotovostný režim"
 
 #: ../plugin/local.py:193
 msgid "Start time is after end time"
-msgstr "Die Startzeit liegt vor dem Endzeitpunkt"
+msgstr "Čas ukončenia sa nachádza pred časom začatia"
 
 #: ../plugin/local.py:194
 msgid "Start Instant Record"
-msgstr "Starte Sofortaufnahme"
+msgstr "Spustit okamžité nahrávanie"
 
 #: ../plugin/local.py:195
 msgid "Stream"
@@ -1239,27 +1241,27 @@ msgstr "Stream"
 
 #: ../plugin/local.py:196
 msgid "Subnet mask"
-msgstr "Subnetzmaske"
+msgstr "Maska podsiete"
 
 #: ../plugin/local.py:197
 msgid "Subservices"
-msgstr "Unterkanal"
+msgstr "Podkanály"
 
 #: ../plugin/local.py:198 ../plugin/local.py:303
 msgid "Tags"
-msgstr "Stichworte"
+msgstr "Štítky"
 
 #: ../plugin/local.py:199
 msgid "Teletext"
-msgstr "Videotext"
+msgstr "Teletext"
 
 #: ../plugin/local.py:200
 msgid "Television"
-msgstr "Fernsehen"
+msgstr "Televízia"
 
 #: ../plugin/local.py:201
 msgid "Template Engine"
-msgstr "Vorlagenart"
+msgstr "Engine šablóny"
 
 #: ../plugin/local.py:202
 msgid "Text"
@@ -1267,83 +1269,83 @@ msgstr "Text"
 
 #: ../plugin/local.py:203
 msgid "Time"
-msgstr "Zeit"
+msgstr "Čas"
 
 #: ../plugin/local.py:204
 msgid "Timeout"
-msgstr "Zeitüberschreitung"
+msgstr "Časový limit"
 
 #: ../plugin/local.py:205
 msgid "Timer added"
-msgstr "Timer hinzugefügt"
+msgstr "Časovač pridaný"
 
 #: ../plugin/local.py:206
 msgid "Timerlist"
-msgstr "Timerliste"
+msgstr "Zoznam časovačov"
 
 #: ../plugin/local.py:207
 msgid "New Name"
-msgstr "Neuer Name"
+msgstr "Nový názov"
 
 #: ../plugin/local.py:208
 msgid "Autotimer Preview"
-msgstr "AutoTimer-Vorschau"
+msgstr "Náhľad automatického časovača"
 
 #: ../plugin/local.py:209
 msgid "Timer"
-msgstr "Timer"
+msgstr "Časovač"
 
 #: ../plugin/local.py:210 ../plugin/local.py:324
 msgid "Timers"
-msgstr "Timer"
+msgstr "Časovače"
 
 #: ../plugin/local.py:211
 msgid "Title"
-msgstr "Titel"
+msgstr "Názov"
 
 #: ../plugin/local.py:212
 msgid "Total Memory"
-msgstr "Gesamtspeicher"
+msgstr "Celková pamäť"
 
 #: ../plugin/local.py:213
 msgid "transcoded"
-msgstr "transkodiert"
+msgstr "transkódované"
 
 #: ../plugin/local.py:214
 msgid "Transcode"
-msgstr ""
+msgstr "Transkódovanie"
 
 #: ../plugin/local.py:215
 msgid "Tuner Bit Error Rate BER"
-msgstr "Tuner-Bitfehlerhäufigkeit BER"
+msgstr "Tuner Bit Error Rate BER"
 
 #: ../plugin/local.py:216
 msgid "Tuner Number"
-msgstr "Tuner-Nummer"
+msgstr "Tuner číslo"
 
 #: ../plugin/local.py:217
 msgid "Tuner Signal"
-msgstr "Tunersignal"
+msgstr "Signál tunera"
 
 #: ../plugin/local.py:218
 msgid "Tuner Signal Quality SNR"
-msgstr "Tuner-Signalqualität SNR"
+msgstr "Kvalita signálu tunera SNR"
 
 #: ../plugin/local.py:219
 msgid "Tuner Signal Quality SNR_DB"
-msgstr "Tuner-Signalqualität SNR_DB"
+msgstr "Kvalita signálu tunera SNR_DB"
 
 #: ../plugin/local.py:220
 msgid "Tuner Signal Power AGC"
-msgstr "Tuner-Signalstärke AGC"
+msgstr "Intenzita signálu tunera AGC"
 
 #: ../plugin/local.py:221
 msgid "Tuner Type"
-msgstr "Tunerart"
+msgstr "Typ tunera"
 
 #: ../plugin/local.py:222
 msgid "Tuners"
-msgstr "Tuner"
+msgstr "Tunery"
 
 #: ../plugin/local.py:223
 msgid "TV"
@@ -1351,7 +1353,7 @@ msgstr "TV"
 
 #: ../plugin/local.py:224
 msgid "TV Multi EPG"
-msgstr "TV-Multi-EPG"
+msgstr "TV Multi EPG"
 
 #: ../plugin/local.py:225
 msgid "Type"
@@ -1359,11 +1361,11 @@ msgstr "Typ"
 
 #: ../plugin/local.py:226
 msgid "Upcoming Events"
-msgstr "Nachfolgende Sendungen"
+msgstr "Nadchádzajúce relácie"
 
 #: ../plugin/local.py:227
 msgid "Version"
-msgstr "Version"
+msgstr "Verzia"
 
 #: ../plugin/local.py:228
 msgid "Video"
@@ -1371,15 +1373,15 @@ msgstr "Video"
 
 #: ../plugin/local.py:229
 msgid "Video Height"
-msgstr "Bildhöhe"
+msgstr "Výška videa"
 
 #: ../plugin/local.py:230
 msgid "Video Wide"
-msgstr "Breitbild"
+msgstr "Šírku videa"
 
 #: ../plugin/local.py:231
 msgid "Video Width"
-msgstr "Bildbreite"
+msgstr "Šírka videa"
 
 #: ../plugin/local.py:232
 msgid "VPS"
@@ -1387,59 +1389,59 @@ msgstr "VPS"
 
 #: ../plugin/local.py:233
 msgid "Volume"
-msgstr "Lautstärke"
+msgstr "Hlasitosť"
 
 #: ../plugin/local.py:234
 msgid "Volume Control"
-msgstr "Lautstärke"
+msgstr "Ovládanie hlasitosti"
 
 #: ../plugin/local.py:235
 msgid "waiting"
-msgstr "wartend"
+msgstr "čakám"
 
 #: ../plugin/local.py:236
 msgid "Warning"
-msgstr "Warnung"
+msgstr "Varovanie"
 
 #: ../plugin/local.py:237
 msgid "Yes/No"
-msgstr "Ja/Nein"
+msgstr "Áno/Nie"
 
 #: ../plugin/local.py:238
 msgid "Zap"
-msgstr "Umschalten"
+msgstr "Prepnúť"
 
 #: ../plugin/local.py:239
 msgid "zap before Stream"
-msgstr "vor dem Streamen umschalten"
+msgstr "prepnúť pred streamovaním"
 
 #: ../plugin/local.py:240
 msgid "Zap to"
-msgstr "Umschalten auf"
+msgstr "Prepnúť na"
 
 #: ../plugin/local.py:241
 msgid "Zapped to"
-msgstr "Umgeschaltet auf"
+msgstr "Prepnuté na"
 
 #: ../plugin/local.py:242
 msgid "Translation to Spanish"
-msgstr ""
+msgstr "Preklad do španielčiny"
 
 #: ../plugin/local.py:243
 msgid "All Files of this Software are open source software;"
-msgstr ""
+msgstr "Všetky súbory tohto softvéru sú open source;"
 
 #: ../plugin/local.py:244
 msgid "you can redistribute it and/or modify it under the"
-msgstr ""
+msgstr "môžete ho šíriť a/alebo modifikovať podľa"
 
 #: ../plugin/local.py:245
 msgid "terms of the GNU General Public License version 2 as"
-msgstr ""
+msgstr "podmienok GNU General Public License verzie 2 v"
 
 #: ../plugin/local.py:246
 msgid "published by the Free Software Foundation."
-msgstr ""
+msgstr "vydané Free Software Foundation."
 
 #: ../plugin/local.py:247
 msgid ""
@@ -1447,295 +1449,298 @@ msgid ""
 "and/or modify it under the terms of the GNU General Public License version 2 "
 "as published by the Free Software Foundation."
 msgstr ""
+"Všetky súbory v tomto softvéri sú open source; môžete ho šíriť a/alebo "
+"upravovať podľa podmienok GNU General Public License verzie 2 v znení "
+"publikovanom Free Software Foundation."
 
 #: ../plugin/local.py:248
 msgid "Root"
-msgstr "Hauptverzeichnis"
+msgstr "Koreňový adresár"
 
 #: ../plugin/local.py:250
 msgid "AutoTimer List"
-msgstr "AutoTimer-Liste"
+msgstr "Zoznam autočasovača"
 
 #: ../plugin/local.py:251
 msgid "AutoTimer Edit"
-msgstr "AutoTimer bearbeiten"
+msgstr "Upraviť autočasovač"
 
 #: ../plugin/local.py:254
 msgid "Match title"
-msgstr "Finde in Titel"
+msgstr "Zhoda v názve"
 
 #: ../plugin/local.py:255
 msgid "EPG encoding"
-msgstr "Zeichensatz des EPG"
+msgstr "znaková sada EPG"
 
 #: ../plugin/local.py:256
 msgid "Search type"
-msgstr "Suchtyp"
+msgstr "Typ vyhľadávania"
 
 #: ../plugin/local.py:257
 msgid "partial match"
-msgstr "Teil des Titels"
+msgstr "čiastočná zhoda"
 
 #: ../plugin/local.py:258
 msgid "exact match"
-msgstr "gesamter Titel"
+msgstr "presná zhoda"
 
 #: ../plugin/local.py:259
 msgid "description match"
-msgstr "Übereinstimmung in der Beschreibung"
+msgstr "zhoda v popise"
 
 #: ../plugin/local.py:260
 msgid "title or description match"
-msgstr "Teil des Titels oder der Beschreibung"
+msgstr "zhoda v názve alebo popise"
 
 #: ../plugin/local.py:261
 msgid "title or short description match"
-msgstr "Teil des Titels oder der Kurzbeschreibung"
+msgstr "zhoda v nadpise alebo krátkom popise"
 
 #: ../plugin/local.py:262
 msgid "short description match"
-msgstr "Teil der Kurzbeschreibung"
+msgstr "zhoda v krátkom popise"
 
 #: ../plugin/local.py:263
 msgid "start match"
-msgstr ""
+msgstr "zhoda v čase začiatku"
 
 #: ../plugin/local.py:264
 msgid "Search strictness"
-msgstr "Genauigkeit der Suche"
+msgstr "Prísnosť hľadania"
 
 #: ../plugin/local.py:265
 msgid "case-sensitive search"
-msgstr "Groß- und Kleinschreibung beachten"
+msgstr "rozlišovať veľkosť písmen"
 
 #: ../plugin/local.py:266
 msgid "case-insensitive search"
-msgstr "Groß- und Kleinschreibung ignorieren"
+msgstr "hľadať - nerozlišovať veľkosť písmen"
 
 #: ../plugin/local.py:267
 msgid "Timer type"
-msgstr "Timer-Art"
+msgstr "Typ časovača"
 
 #: ../plugin/local.py:268
 msgid "record"
-msgstr "Aufnehmen"
+msgstr "nahrať"
 
 #: ../plugin/local.py:269
 msgid "zap"
-msgstr "Umschalten"
+msgstr "prepnúť"
 
 #: ../plugin/local.py:270
 msgid "Override found with alternative service"
-msgstr "Sendung durch Alternative ersetzen"
+msgstr "Nájdenú prepísať alternatívnou službou"
 
 #: ../plugin/local.py:271
 msgid "Only match during timespan"
-msgstr "Suche nur innerhalb einer Zeitspanne"
+msgstr "Zhoda jedine v rámci časového rozpätia"
 
 #: ../plugin/local.py:272
 msgid "Begin of timespan"
-msgstr "Anfang der Zeitspanne"
+msgstr "Začiatok časového rozpätia"
 
 #: ../plugin/local.py:273
 msgid "End of Timespan"
-msgstr "Ende der Zeitspanne"
+msgstr "Koniec časového rozpätia"
 
 #: ../plugin/local.py:274
 msgid "Restrict to events on certain dates"
-msgstr "Auf bestimmtes Datum beschränken"
+msgstr "Obmedziť na relácie v určených dátumoch"
 
 #: ../plugin/local.py:275
 msgid "Not after"
-msgstr "Ausführung nicht nach"
+msgstr "Nie po"
 
 #: ../plugin/local.py:276
 msgid "Not before"
-msgstr "Ausführung nicht vor"
+msgstr "Nie pred"
 
 #: ../plugin/local.py:277
 msgid "Custom offset"
-msgstr "Angepasster Vor- und Nachlauf"
+msgstr "Vlastná rezerva"
 
 #: ../plugin/local.py:278
 msgid "Offset before recording (in m)"
-msgstr "Vorlauf der Aufnahme (in Min.)"
+msgstr "Rezerva pred nahrávaním (v minútach)"
 
 #: ../plugin/local.py:279
 msgid "Offset after recording (in m)"
-msgstr "Nachlauf der Aufnahme (in Min.)"
+msgstr "Rezerva po nahrávaní (v minútach)"
 
 #: ../plugin/local.py:280
 msgid "Set maximum duration"
-msgstr "Finde maximale Länge"
+msgstr "Nastaviť maximálnu dĺžku"
 
 #: ../plugin/local.py:281
 msgid "After event"
-msgstr "Nach der Aufnahme"
+msgstr "Po udalosti"
 
 #: ../plugin/local.py:282
 msgid "standard"
-msgstr "Standard"
+msgstr "štandardné"
 
 #: ../plugin/local.py:283
 msgid "auto"
-msgstr "Automatisch"
+msgstr "auto"
 
 #: ../plugin/local.py:284
 msgid "do nothing"
-msgstr "Nichts"
+msgstr "žiadna akcia"
 
 #: ../plugin/local.py:285
 msgid "go to standby"
-msgstr "Standby"
+msgstr "prejsť do pohotovostného režimu"
 
 #: ../plugin/local.py:286
 msgid "go to deep standby"
-msgstr "Ausschalten"
+msgstr "prejsť do režimu hlbokého spánku"
 
 #: ../plugin/local.py:287
 msgid "Execute \"after event\" during timespan"
-msgstr "Zeitspanne für Ereignis \"nach der Aufnahme\""
+msgstr "Spustiť \"po udalosti\" počas časového rozpätie"
 
 #: ../plugin/local.py:288
 msgid "Begin of \"after event\" timespan"
-msgstr "Beginn der \"nach der Aufnahme\" Zeitspanne"
+msgstr "Začiatok časového rozpätie \"po reláciii\""
 
 #: ../plugin/local.py:289
 msgid "End of \"after event\" timespan"
-msgstr "Ende der \"nach der Aufnahme\" Zeitspanne"
+msgstr "Koniec časového rozpätia \"po udalosti\""
 
 #: ../plugin/local.py:290
 msgid "Record a maximum of x times"
-msgstr "Höchstens X-mal aufnehmen"
+msgstr "Nahrať maximálne x krát"
 
 #: ../plugin/local.py:291
 msgid "Amount of recordings left"
-msgstr "Verbleibende Anzahl Aufnahmen"
+msgstr "Počet zostávajúcich nahrávaní"
 
 #: ../plugin/local.py:292 ../plugin/local.py:363
 msgid "Never"
-msgstr "Niemals"
+msgstr "Nikdy"
 
 #: ../plugin/local.py:293
 msgid "Monthly"
-msgstr "Monatlich"
+msgstr "Mesačne"
 
 #: ../plugin/local.py:294
 msgid "Weekly (Sunday)"
-msgstr "Wöchentlich (Sonntag)"
+msgstr "Týždenne (nedeľa)"
 
 #: ../plugin/local.py:295
 msgid "Weekly (Monday)"
-msgstr "Wöchentlich (Montag)"
+msgstr "Týždeň (pondelok)"
 
 #: ../plugin/local.py:296
 msgid "Reset count"
-msgstr "Setze Zähler zurück"
+msgstr "Resetovať počet"
 
 #: ../plugin/local.py:297
 msgid "Require description to be unique"
-msgstr "Beschreibung muss eindeutig sein"
+msgstr "Vyžadovať jedinečný popis"
 
 #: ../plugin/local.py:298
 msgid "No"
-msgstr "Nein"
+msgstr "Nie"
 
 #: ../plugin/local.py:299
 msgid "On same service"
-msgstr "Auf dem gleichen Sender"
+msgstr "Na rovnakej stanici"
 
 #: ../plugin/local.py:300
 msgid "On any service"
-msgstr "Auf jedem Sender"
+msgstr "Na akúkoľvek stanicu"
 
 #: ../plugin/local.py:301
 msgid "Any service/recording"
-msgstr "Service/Aufnahme beliebig"
+msgstr "Akákoľvek stanica/nahrávanie"
 
 #: ../plugin/local.py:302
 msgid "Use a custom location"
-msgstr "Angepasstes Aufnahmeverzeichnis"
+msgstr "Použiť vlastné umiestnenie"
 
 #: ../plugin/local.py:304
 msgid "select Tags"
-msgstr "Stichworte auswählen"
+msgstr "výber značiek"
 
 #: ../plugin/local.py:306
 msgid "select Channels"
-msgstr "Sender auswählen"
+msgstr "výber staníc"
 
 #: ../plugin/local.py:308
 msgid "select Bouquets"
-msgstr "Favoriten auswählen"
+msgstr "výber prehľadov"
 
 #: ../plugin/local.py:309
 msgid "Enable Filtering"
-msgstr "Filter einschalten"
+msgstr "Povoliť filtrovanie"
 
 #: ../plugin/local.py:310
 msgid "Include"
-msgstr "Einschließen"
+msgstr "Zahrnúť"
 
 #: ../plugin/local.py:311
 msgid "Exclude"
-msgstr "Ausschließen"
+msgstr "Vylúčiť"
 
 #: ../plugin/local.py:312
 msgid "in Title"
-msgstr "im Titel"
+msgstr "v názve"
 
 #: ../plugin/local.py:313
 msgid "in Shortdescription"
-msgstr "in der Kurzbeschreibung"
+msgstr "v stručnom popise"
 
 #: ../plugin/local.py:314
 msgid "in Description"
-msgstr "in der Beschreibung"
+msgstr "v popise"
 
 #: ../plugin/local.py:315
 msgid "on Weekday"
-msgstr "an einem Wochentag"
+msgstr "Deň v týždni"
 
 #: ../plugin/local.py:316
 msgid "Weekend"
-msgstr "Wochenende"
+msgstr "Víkend"
 
 #: ../plugin/local.py:317
 msgid "Weekday"
-msgstr "Wochentag"
+msgstr "Pracovný deň"
 
 #: ../plugin/local.py:318
 msgid "Add"
-msgstr "Hinzufügen"
+msgstr "Pridať"
 
 #: ../plugin/local.py:319
 msgid "Delete"
-msgstr "Löschen"
+msgstr "Odstrániť"
 
 #: ../plugin/local.py:320 ../plugin/local.py:372 ../plugin/local.py:380
 msgid "Reload"
-msgstr "Aktualisieren"
+msgstr "Znovu načítať"
 
 #: ../plugin/local.py:322
 msgid "Parse"
-msgstr "Parsen"
+msgstr "Analyzovať"
 
 #: ../plugin/local.py:323
 msgid "Simulate"
-msgstr "Simulieren"
+msgstr "Simulovať"
 
 #: ../plugin/local.py:326
 msgid "Do you really want to delete the AT"
-msgstr "Wollen Sie folgenden AutoTimer wirklich löschen"
+msgstr "Naozaj chcete zmazať AT?"
 
 #: ../plugin/local.py:327
 msgid "Label series"
-msgstr ""
+msgstr "Série menoviek"
 
 # New Autotimer Setting Windows name (not enabled to transfer atm)
 #: ../plugin/local.py:329
 msgid "AutoTimer Settings"
-msgstr "Autotimer-Einstellungen"
+msgstr "Nastavenia automatického časovača"
 
 #: ../plugin/local.py:330
 msgid "AutoPoll"
@@ -1743,15 +1748,15 @@ msgstr "AutoPoll"
 
 #: ../plugin/local.py:331
 msgid "Interval (in h)"
-msgstr "Intervall (in Std.)"
+msgstr "Interval (v h)"
 
 #: ../plugin/local.py:332
 msgid "Max Days"
-msgstr "Max. Anzahl Tage"
+msgstr "Maximálny počet dní"
 
 #: ../plugin/local.py:333
 msgid "Try Guessing"
-msgstr "Versuche zu raten"
+msgstr "Skúste si tipnúť"
 
 #: ../plugin/local.py:334
 msgid "Fastscan"
@@ -1759,35 +1764,35 @@ msgstr "Fastscan"
 
 #: ../plugin/local.py:335
 msgid "Show in Extensionsmenu"
-msgstr "Im Erweiterungsmenü anzeigen"
+msgstr "Zobraziť v ponuke rozšírení"
 
 #: ../plugin/local.py:336
 msgid "Disabled on Conflict"
-msgstr "Deaktiveren bei Konflikt"
+msgstr "Pri konflikte vypnuté"
 
 #: ../plugin/local.py:337
 msgid "Add Similar on Conflict"
-msgstr "Bei Konflikt ähnliche Sendungen zufügen"
+msgstr "Pri konflikte pridať rovnaké"
 
 #: ../plugin/local.py:338
 msgid "Notify if Conflict"
-msgstr "Bei Konflikt benachrichtigen"
+msgstr "Upozorniť pri konflikte"
 
 #: ../plugin/local.py:339
 msgid "Notify if Similar"
-msgstr "Bei ähnlicher Sendung benachrichtigen"
+msgstr "Upozorniť pri zhode"
 
 #: ../plugin/local.py:340
 msgid "Add Autotimer to Tags"
-msgstr "\"Autotimer\" als Markierung zufügen"
+msgstr "Pridať autočasovač k štítkom"
 
 #: ../plugin/local.py:341
 msgid "Add Name to Tags"
-msgstr "Name als Markierung zufügen"
+msgstr "Pridať názov do označení"
 
 #: ../plugin/local.py:343
 msgid "None"
-msgstr "Nichts"
+msgstr "Žiadne"
 
 #: ../plugin/local.py:346
 msgid "Editor"
@@ -1795,227 +1800,236 @@ msgstr "Editor"
 
 #: ../plugin/local.py:347
 msgid "Plain"
-msgstr "Einfach"
+msgstr "Prostý"
 
 #: ../plugin/local.py:348
 msgid "Wizzard"
-msgstr "Assistent"
+msgstr "Sprievodca"
 
 #: ../plugin/local.py:351
 msgid "Enable Messages"
-msgstr "Nachrichten anzeigen"
+msgstr "Povoliť správy"
 
 #: ../plugin/local.py:354
 msgid "Delay Standby"
-msgstr "Standby-Verzögerung"
+msgstr "Oneskorenie pohotovostného režimu"
 
 #: ../plugin/local.py:355
 msgid "Interval (min.)"
-msgstr "Intervall (Min.)"
+msgstr "Interval (min.)"
 
 #: ../plugin/local.py:356
 msgid "Interval (sec.)"
-msgstr "Intervall (Sek.)"
+msgstr "Interval (sek.)"
 
 #: ../plugin/local.py:357
 msgid "Afterevent"
-msgstr ""
+msgstr "Po udalosti"
 
 #: ../plugin/local.py:358
 msgid "Force"
-msgstr "Erzwingen"
+msgstr "Vynútiť"
 
 #: ../plugin/local.py:359
 msgid "Wakeup"
-msgstr "Aufwecken"
+msgstr "Prebudiť"
 
 #: ../plugin/local.py:360
 msgid "Inherit Autotimer"
-msgstr "Sender aus AutoTimern übernehmen"
+msgstr "Prevziať autočasovač"
 
 #: ../plugin/local.py:361
 msgid "Parse Autotimer"
-msgstr "AutoTimer auswerten"
+msgstr "Analyzovať automatický časovač"
 
 #: ../plugin/local.py:362
 msgid "Always"
-msgstr "Immer"
+msgstr "Vždy"
 
 #: ../plugin/local.py:364
 msgid "Background only"
-msgstr "Nur im Hintergrund"
+msgstr "Iba pozadie"
 
 #: ../plugin/local.py:365
 msgid "Ask, default Yes"
-msgstr "Nachfrage mit Standard Ja"
+msgstr "Spýtať sa, predvolene áno"
 
 #: ../plugin/local.py:366
 msgid "Ask, default No"
-msgstr "Nachfrage mit Standard Nein"
+msgstr "Spýtať sa, predvolene nie"
 
 #: ../plugin/local.py:367
 msgid "Method"
-msgstr "Methode"
+msgstr "Metóda"
 
 #: ../plugin/local.py:368
 msgid "Visibly"
-msgstr "Sichtbar"
+msgstr "Viditeľne"
 
 #: ../plugin/local.py:369
 msgid "Picture in Picture"
-msgstr "Bild in Bild"
+msgstr "Obraz v obraze"
 
 #: ../plugin/local.py:370
 msgid "Picture in Picture (hidden)"
-msgstr "Bild in Bild (versteckt)"
+msgstr "Obraz v obraze (skryté)"
 
 #: ../plugin/local.py:371
 msgid "Fake Recording"
-msgstr "Scheinaufnahme"
+msgstr "Falošné nahrávanie"
 
 #: ../plugin/local.py:374
 msgid "Refresh now"
-msgstr "Jetzt auffrischen"
+msgstr "Obnoviť teraz"
 
 #: ../plugin/local.py:376
 msgid "Add Provider as new Bouquet"
-msgstr "Anbieter als neues Bouquet hinzufügen"
+msgstr "Pridať poskytovateľa ako nový prehľad"
 
 #: ../plugin/local.py:377
 msgid "Add channel(s) to Bouquet"
-msgstr "Sender zum Bouquet hinzufügen"
+msgstr "Pridať stanicu(e) do prehľadu"
 
 #: ../plugin/local.py:378
 msgid "Add channel(s) as alternate"
-msgstr "Sender als Alternative(n) hinzufügen"
+msgstr "Pridať stanicu(e) ako alternatívu"
 
 #: ../plugin/local.py:381
 msgid "Export"
-msgstr "Exportieren"
+msgstr "Exportovať"
 
 #: ../plugin/local.py:382
 msgid "Import"
-msgstr "Importieren"
+msgstr "Importovať"
 
 #: ../plugin/local.py:383
 msgid "Add Bouquet"
-msgstr "Bouquet hinzufügen"
+msgstr "Pridať prehľad"
 
 #: ../plugin/local.py:384
 msgid "Rename Bouquet"
-msgstr "Bouquet umbenennen"
+msgstr "Premenovať prehľad"
 
 #: ../plugin/local.py:385
 msgid "Delete Bouquet"
-msgstr "Bouquet löschen"
+msgstr "Odstrániť prehľad"
 
 #: ../plugin/local.py:386
 msgid "Add Marker"
-msgstr "Marker hinzufügen"
+msgstr "Pridať značku"
 
 #: ../plugin/local.py:387
 msgid "Rename"
-msgstr "Umbenennen"
+msgstr "Premenovať"
 
 #: ../plugin/local.py:388
 msgid "Delete Channel(s)"
-msgstr "Sender löschen"
+msgstr "Odstrániť kanál(y)"
 
 #: ../plugin/local.py:389
 msgid "Do you really want to delete the channel(s)"
-msgstr "Wollen Sie nachfolgende(n) Sender wirklich löschen"
+msgstr "Naozaj chcete odstrániť stanicu(e)"
 
 #: ../plugin/local.py:390
 msgid "Do you really want to delete the bouquet"
-msgstr "Wollen Sie folgendes Bouquet wirklich löschen"
+msgstr "Naozaj chcete odstrániť prehľad"
 
 #: ../plugin/local.py:391
 msgid "Name of the Bouquet"
-msgstr "Name des Bouquets"
+msgstr "Názov prehľadu"
 
 #: ../plugin/local.py:392
 msgid "Name of the Marker"
-msgstr "Name des Markers"
+msgstr "Názov značky"
 
 #: ../plugin/local.py:393
 msgid "Enter new name for the bouquet"
-msgstr "Neuen Namen des Bouquets eingeben"
+msgstr "Zadajte nový názov prehľadu"
 
 #: ../plugin/local.py:394
 msgid "Enter new name for the marker"
-msgstr "Neuen Namen des Markers eingeben"
+msgstr "Zadajte nový názov pre značku"
 
 #: ../plugin/local.py:395
 msgid "Please enter filename"
-msgstr "Bitte den Dateinamen angeben"
+msgstr "Prosím, zadajte názov súboru"
 
 #: ../plugin/local.py:396
 msgid "Do you really want to restore from file"
-msgstr "Wollen Sie diese Datei wirklich importieren"
+msgstr "Naozaj chcete obnoviť zo súboru"
 
 #: ../plugin/plugin.py:94
 msgid "OpenWebif url: http://yourip:port"
-msgstr "OpenWebif-URL: http://ip_des_receivers:port"
+msgstr "OpenWebif adresa: http://vašaIP:port"
 
 #: ../plugin/plugin.py:108
 msgid "OpenWebInterface Enabled"
-msgstr "OpenWebinterface einschalten"
+msgstr "OpenWebInterface zapnuté"
 
 #: ../plugin/plugin.py:115
 msgid "HTTP port"
-msgstr "Port für HTTP"
+msgstr "HTTP port"
 
 #: ../plugin/plugin.py:116
 msgid "Enable HTTP Authentication"
-msgstr "Authentifizierung für HTTP aktivieren"
+msgstr "Vyžadovať prihlásenie pre HTTP"
 
 #: ../plugin/plugin.py:117
 msgid "Enable HTTPS"
-msgstr "Aktivierung von HTTPS"
+msgstr "Povoliť HTTPS"
 
 #: ../plugin/plugin.py:119
 msgid "HTTPS port"
-msgstr "Port für HTTPS"
+msgstr "HTTPS port"
 
 #: ../plugin/plugin.py:120
 msgid "Enable HTTPS Authentication"
-msgstr "Authentifizierung für HTTPS aktivieren"
+msgstr "Vyžadovať prihlásenie pre HTTPS"
 
 #: ../plugin/plugin.py:121
 msgid "Require client cert for HTTPS"
-msgstr "Erzwinge zertifikatbasierte Anmeldung"
+msgstr "Vyžadovať certifikát klienta pre HTTPS"
 
 #: ../plugin/plugin.py:123
 msgid "Enable Authentication for streaming"
-msgstr "Authentifizierung für Streaming aktivieren"
+msgstr "Zapnúť overovanie pre streaming"
 
 #: ../plugin/plugin.py:124
 msgid "Disable access for user root"
-msgstr "Anmeldung als Benutzer root verbieten"
+msgstr "Zakázať prístup pre užívateľa root"
 
 #: ../plugin/plugin.py:125
 msgid "Smart services renaming for XBMC"
-msgstr "Sendernamen für XBMC umbenennen"
+msgstr "Inteligentné premenovanie staníc pre XBMC"
 
 #: ../plugin/plugin.py:126
 msgid "Enable Parental Control"
-msgstr "Kindersicherung aktivieren"
+msgstr "Zapnúť rodičovskú kontrolu"
 
 #: ../plugin/plugin.py:127
 msgid "Add service name to stream information"
-msgstr "Servicenamen zu den Streaminformationen hinzufügen"
+msgstr "Pridať názov služby do informácie o prúde"
 
 #: ../plugin/plugin.py:129
 msgid "Character encoding for EPG data"
-msgstr "Zeichenkodierung der EPG Daten"
+msgstr "Kódovanie znakov pre dáta EPG"
 
 #: ../plugin/plugin.py:135 ../plugin/plugin.py:194 ../plugin/plugin.py:196
 #: ../plugin/plugin.py:198
 msgid "OpenWebif Configuration"
-msgstr "OpenWebif-Konfiguration"
+msgstr "Nastavenie OpenWebif"
+
+#~ msgid "Transcoding Setup"
+#~ msgstr "Transkódovanie"
+
+#~ msgid "True"
+#~ msgstr "Áno"
+
+#~ msgid "False"
+#~ msgstr "Nie"
 
 #~ msgid "VPS Overwrite"
-#~ msgstr "VPS überschreiben"
+#~ msgstr "prepísať VPS"
 
 #~ msgid "SleepTimer feature not available"
-#~ msgstr "SleepTimer-Funktion nicht verfügbar"
+#~ msgstr "Časovač vypnutia nie je k dispozícii"
