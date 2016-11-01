@@ -8,6 +8,9 @@
 * improve theme support
 * update translations
 * fix settings
+* new second multiepg / #36 #267
+* show orbital position in current info / #188
+* use relativ links / #190
 
 ## Version 1.0.0
 **FEATURES**
