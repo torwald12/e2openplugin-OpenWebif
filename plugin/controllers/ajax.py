@@ -91,7 +91,7 @@ class AjaxController(BaseController):
 		return { "info": info }
 	
 	def P_boxinfo(self, request):
-		info = getInfo()
+		info = getInfo(self.session)
 		type = getBoxType()
 
 		if fileExists(getPublicPath("/images/boxes/"+type+".png")):
@@ -222,8 +222,9 @@ class AjaxController(BaseController):
 		if "day" in request.args.keys():
 			try:
 				day = int(request.args["day"][0])
-				now = localtime()
-				begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 0, 0, 0, -1, -1, -1) )
+				if day > 0:
+					now = localtime()
+					begintime = mktime( (now.tm_year, now.tm_mon, now.tm_mday+day, 0, 0, 0, -1, -1, -1) )
 			except Exception, e:
 				pass
 		mode = 1
