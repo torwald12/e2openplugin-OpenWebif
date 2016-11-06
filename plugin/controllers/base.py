@@ -210,12 +210,18 @@ class BaseController(resource.Resource):
 	def oscamconfPath(self):
 		# Find and parse running oscam
 		opath = None
+		owebif = None
 		if fileExists("/tmp/.oscam/oscam.version"):
 			data = open("/tmp/.oscam/oscam.version", "r").readlines()
 			for i in data:
 				if "configdir:" in i.lower():
 					opath = i.split(":")[1].strip() + "/oscam.conf"
-		return opath
+				if "web interface support:" in i.lower():
+					owebif = i.split(":")[1].strip()
+		if owebif == "yes":
+			return opath
+		else:
+			return None
 
 	def prepareMainTemplate(self, request):
 		# here will be generated the dictionary for the main template
@@ -262,6 +268,7 @@ class BaseController(resource.Resource):
 			data = open(self.oscamconf, "r").readlines()
 			webif = False
 			proto = "http"
+			port = "8888"
 			httpuser = httppwd = httpport = False
 			for i in data:
 				if "[webif]" in i.lower():
@@ -278,8 +285,8 @@ class BaseController(resource.Resource):
 					if port[0] == '+':
 						proto = "https"
 						port = port[1:]
-			url = "%s://%s:%s" % (proto, request.getRequestHostname(), port)
 			if webif:
+				url = "%s://%s:%s" % (proto, request.getRequestHostname(), port)
 				extras.append({ 'key': url, 'description': _("OSCam Webinterface"), 'nw':'1'})
 
 		try:
