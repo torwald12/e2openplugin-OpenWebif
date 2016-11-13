@@ -1,6 +1,6 @@
 //******************************************************************************
 //* openwebif.js: openwebif base module
-//* Version 2.4
+//* Version 2.5
 //******************************************************************************
 //* Copyright (C) 2011-2014 E2OpenPlugins
 //*
@@ -11,6 +11,7 @@
 //* V 2.2 - remove sync requests
 //* V 2.3 - prepare web tv / better timer conflicts
 //* V 2.4 - improve movie sort
+//* V 2.5 - improve settings
 //*
 //* Authors: skaman <sandro # skanetwork.com>
 //* 		 meo
@@ -423,7 +424,8 @@ function open_epg_dialog(sRef,Name) {
 
 function open_epg_search_dialog() {
 	var spar = $("#epgSearch").val();
-	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar);
+	var full = (GetLSValue('epgsearchtype',false)=='true') ? '&full=1' : ''
+	var url = "ajax/epgdialog?sstr=" + encodeURIComponent(spar) + full;
 	$("#epgSearch").val("");
 	
 	var w = $(window).width() -100;
@@ -431,7 +433,7 @@ function open_epg_search_dialog() {
 	
 	var buttons = {}
 	buttons[tstr_close] = function() { $(this).dialog("close");};
-	buttons[tstr_open_in_new_window] = function() { $(this).dialog("close"); open_epg_search_pop(spar);};
+	buttons[tstr_open_in_new_window] = function() { $(this).dialog("close"); open_epg_search_pop(spar,full);};
 	
 	load_dm_spinner(url,tstr_epgsearch,w,h,buttons);
 }
@@ -445,8 +447,8 @@ function _epg_pop(url) {
 	});	
 }
 
-function open_epg_search_pop(spar) {
-	_epg_pop("ajax/epgpop?sstr=" + encodeURIComponent(spar));
+function open_epg_search_pop(spar,full) {
+	_epg_pop("ajax/epgpop?sstr=" + encodeURIComponent(spar) + full);
 }
 
 function open_epg_pop(sRef) {
@@ -857,17 +859,20 @@ function toggleMenu(name) {
 
 // keep checkboxes syncronized
 $(function() {
-	$("input[name=remotegrabscreen]").click(function(evt) {
-		$('input[name=remotegrabscreen]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("/api/remotegrabscreenshot?checked=" + evt.currentTarget.checked);
+	$('.remotegrabscreen').click(function(evt) {
+		$('.remotegrabscreen').prop('checked', evt.currentTarget.checked);
+		SetLSValue('remotegrabscreen',evt.currentTarget.checked);
 	});
-});
 
-$(function() {
-	$("input[name=epgsearchtype]").click(function(evt) {
-		$('input[name=epgsearchtype]').attr('checked', evt.currentTarget.checked);
-		webapi_execute("/api/epgsearchtype?checked=" + evt.currentTarget.checked);
+	$('input[name=epgsearchtype]').click(function(evt) {
+		$('input[name=epgsearchtype]').prop('checked', evt.currentTarget.checked);
+		SetLSValue('epgsearchtype',evt.currentTarget.checked);
 	});
+	if (typeof $('input[name=epgsearchtype]') !== 'undefined')
+		$('input[name=epgsearchtype]').prop('checked',(GetLSValue('epgsearchtype',false)=='true'));
+	else
+		SetLSValue('epgsearchtype',false);
+	$('.remotegrabscreen').prop('checked',(GetLSValue('remotegrabscreen',true)=='true'));
 });
 
 $(window).keydown(function(evt) {
@@ -881,7 +886,8 @@ $(window).keydown(function(evt) {
 });
 
 function callScreenShot(){
-	if ($('input[name=remotegrabscreen]').is(':checked'))
+
+	if(GetLSValue('remotegrabscreen',true)=='true')
 	{
 		if (lastcontenturl == 'ajax/screenshot') {
 			grabScreenshot(screenshotMode);
