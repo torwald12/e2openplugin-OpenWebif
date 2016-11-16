@@ -28,7 +28,7 @@ import os
 import imp
 import re
 
-global listener, server_to_stop
+global listener, server_to_stop, site
 listener = []
 
 def verifyCallback(connection, x509, errnum, errdepth, ok):
@@ -120,7 +120,7 @@ def buildRootTree(session):
 
 def HttpdStart(session):
 	if config.OpenWebif.enabled.value == True:
-		global listener
+		global listener, site
 		port = config.OpenWebif.port.value
 
 		temproot = buildRootTree(session)
@@ -238,6 +238,24 @@ class AuthResource(resource.Resource):
 			return self.resource.render(request)
 
 	def getChildWithDefault(self, path, request):
+		global site
+		url = str(request.uri)
+		sid = None
+		if url.startswith('/web/stream?'):
+			m = re.search('(?:\?|&)sid=(.+?)(?:$|&)', url)
+			if m:
+				sid = str(m.groups()[0])
+				# Strip sid from URL:
+				url = re.sub('&sid=.+?$', '', url)
+				url = re.sub('&sid=.+?&', '&', url)
+				request.uri = url
+				try:
+					oldsession = site.getSession(sid).sessionNamespaces
+					if "logged" in oldsession.keys() and oldsession["logged"]:
+						session = request.getSession().sessionNamespaces
+						session["logged"] = True
+				except:
+					pass
 		session = request.getSession().sessionNamespaces
 		host = request.getHost().host
 
