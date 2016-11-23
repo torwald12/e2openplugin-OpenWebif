@@ -40,6 +40,7 @@ import os
 import sys
 import time
 import string
+import glob
 
 OPENWEBIFVER = "OWIF 1.0.4"
 
@@ -201,9 +202,13 @@ def getPiconPath():
 	else:
 		return ""
 
-def getInfo(session = None):
+def getInfo(session = None, need_fullinfo = False):
 	# TODO: get webif versione somewhere!
 	info = {}
+	global STATICBOXINFO
+
+	if not (STATICBOXINFO is None or need_fullinfo):
+		return STATICBOXINFO
 
 	info['brand'] = getMachineBrand()
 	info['model'] = getMachineName()
@@ -410,8 +415,8 @@ def getInfo(session = None):
 		})
 
 	info['shares'] = []
-	if fileExists('/etc/auto.network'):
-		autofs = '/etc/auto.network'
+	listing = glob.glob('/etc/auto.netw*')
+	for autofs in listing:
 		method = "autofs"
 		for line in file(autofs).readlines():
 			if not line.startswith('#'):
@@ -562,7 +567,6 @@ def getInfo(session = None):
 		except Exception, error:
 			info['EX'] = error
 
-	global STATICBOXINFO
 	STATICBOXINFO = info
 	return info
 
