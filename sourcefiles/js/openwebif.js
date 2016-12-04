@@ -672,10 +672,8 @@ function zapChannel(sRef, sname) {
 }
 
 function toggleStandby() {
-	if (shiftbutton) {
-		webapi_execute('api/set_powerup_without_waking_tv');
-	}
-	webapi_execute('api/powerstate?newstate=0');
+	var sh = (shiftbutton) ? '&shift=1':'';
+	webapi_execute('api/powerstate?newstate=0'+sh);
 	setTimeout(getStatusInfo, 1500);
 }
 
@@ -1305,12 +1303,14 @@ function InitAccordeon(obj)
 
 function RefreshMEPG()
 {
+	var full = ($("#compressmepg").is(":visible"));
 	var bq = '';
 	var lbq=GetLSValue('lastmbq','');
 	if(lbq!='')
 		bq= "?bref=" + lbq;
 	$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq,function() {
-		ExpandMEPG();
+		if(full)
+			ExpandMEPG();
 	});
 }
 
@@ -1318,7 +1318,7 @@ function ExpandMEPG()
 {
 	$("#expandmepg").hide();
 	$("#compressmepg").show();
-	$("#refreshmepg").show();
+	$("#refreshmepg2").show();
 	$("#header").hide();
 	$("#leftmenu").hide();
 	$('#content').css('margin-left', '5px')
@@ -1331,9 +1331,11 @@ function ExpandMEPG()
 
 function CompressMEPG()
 {
-	$("#refreshmepg").hide();
+	$("#refreshmepg").show();
 	$("#expandmepg").show();
 	$("#compressmepg").hide();
+	$("#refreshmepg").show();
+	$("#refreshmepg2").hide();
 	$("#header").show();
 	$("#leftmenu").show();
 	$('#content').css('margin-left', '185px')
@@ -1363,6 +1365,7 @@ function InitBouquets(tv)
 	if (tv===true) {
 		$('#btn0').click(function(){
 			$("#expandmepg").hide();
+			$("#refreshmepg").hide();
 			$("#tvcontent").html(loadspinner).load("ajax/current");
 		});
 		$('#btn5').click(function(){
@@ -1373,6 +1376,7 @@ function InitBouquets(tv)
 				bq= "?bref=" + lbq;
 			$("#tvcontent").html(loadspinner).load('ajax/multiepg' + bq);
 			$("#expandmepg").show();
+			$("#refreshmepg").show();
 		});
 
 	} 
@@ -1384,18 +1388,22 @@ function InitBouquets(tv)
 	}
 	$('#btn1').click(function(){
 		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
 		$("#tvcontent").html(loadspinner).load("ajax/bouquets" + mode);
 	});
 	$('#btn2').click(function(){
 		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
 		$("#tvcontent").html(loadspinner).load("ajax/providers" + mode);
 	});
 	$('#btn3').click(function(){
 		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
 		$("#tvcontent").load("ajax/satellites" + mode);
 	});
 	$('#btn4').click(function(){
 		$("#expandmepg").hide();
+		$("#refreshmepg").hide();
 		$("#tvcontent").html(loadspinner).load("ajax/channels" + mode);
 	});
 	
@@ -1869,6 +1877,11 @@ var SSHelperObj = function () {
 		{
 			self = this;
 			self.ssr_i = parseInt(GetLSValue('ssr_i','30'));
+			
+			$('#screenshotbutton0').click(function(){grabScreenshot('all');});
+			$('#screenshotbutton1').click(function(){grabScreenshot('video');});
+			$('#screenshotbutton2').click(function(){grabScreenshot('osd');});
+			
 			$('#screenshotbutton').buttonset();
 			$('#screenshotrefreshbutton').buttonset();
 			$('#ssr_i').val(self.ssr_i);
@@ -1884,7 +1897,7 @@ var SSHelperObj = function () {
 			$('#ssr_i').change(function() {
 				var t = $('#ssr_i').val();
 				SetLSValue('ssr_i',t);
-				ssr_i = parseInt(t);
+				self.ssr_i = parseInt(t);
 				if($('#ssr_s').is(':checked'))
 				{
 					clearInterval(self.screenshotInterval);
@@ -1906,7 +1919,7 @@ var SSHelperObj = function () {
 			grabScreenshot(screenshotMode);
 
 			if(GetLSValue('ssr_s',false))
-				setSInterval();
+				self.setSInterval();
 
 		},setSInterval: function()
 		{

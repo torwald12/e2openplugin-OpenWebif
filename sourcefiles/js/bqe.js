@@ -1,6 +1,6 @@
 //******************************************************************************
 //* bqe.js: openwebif Bouqueteditor plugin
-//* Version 2.4
+//* Version 2.5
 //******************************************************************************
 //* Copyright (C) 2014-2016 Joerg Bleyel
 //* Copyright (C) 2014-2016 E2OpenPlugins
@@ -13,6 +13,7 @@
 //* V 2.2 - update status label
 //* V 2.3 - fix #198
 //* V 2.4 - improve search fix #419
+//* V 2.5 - prepare support spacers #239
 
 //* License GPL V2
 //* https://github.com/E2OpenPlugins/e2openplugin-OpenWebif/blob/master/LICENSE.txt
@@ -312,16 +313,21 @@
 						var options = [];
 						var s = data['services'];
 						$.each( s, function ( key, val ) {
-							var sref = val['servicereference']
-							var name = val['servicename']
+							var sref = val['servicereference'];
 							var m = (val['ismarker'] == 1) ? '<span style="float:right">(M)</span>' : '';
-							options.push( $('<li/>', {
-								class: "ui-widget-content",
-								data: { 
-									ismarker: val['ismarker'],
-									sref: sref
-								}
-							}).html('<div class="handle"><span class="ui-icon ui-icon-arrow-2-n-s"></span></div>'+name+m+'</li>') );
+							var name=val['servicename'];
+							var pos = val['pos'];
+							if(val['ismarker'] == 2)
+								m= '<span style="float:right">(S)</span>';
+							name = pos.toString() + ' - ' + name;
+							if(name!='')
+								options.push( $('<li/>', {
+									class: "ui-widget-content",
+									data: { 
+										ismarker: val['ismarker'],
+										sref: sref
+									}
+								}).html('<div class="handle"><span class="ui-icon ui-icon-arrow-2-n-s"></span></div>'+name+m+'</li>') );
 						});
 						if (callback) {
 							callback(options);
@@ -450,6 +456,7 @@
 				var state = item.length == 0;
 				$('#btn-channel-delete').prop( 'disabled', state );
 				$('#btn-marker-add').prop( 'disabled', state );
+				$('#btn-spacer-add').prop( 'disabled', state );
 
 				state = item.length != 1 || item.data('ismarker') != 1;
 				$('#btn-marker-group-rename').prop( "disabled", state );
@@ -467,8 +474,13 @@
 						mode: obj.mode,  
 						position: obj.position 
 					}, 
-					success: function () {}
+					success:self.renumberChannel
 				});
+			},
+
+			renumberChannel: function ()
+			{
+				//TODO
 			},
 
 			// Add selected services from left pane channels list to right pane channels list
@@ -546,21 +558,29 @@
 					});
 				}
 			},
-
+			addMarker: function () {
+				self._addMarker(false);
+			},
+			addSpacer: function () {
+				self._addMarker(true);
+			},
 			// Callback function for right pane add marker button
 			// Prompts for marker name, marker will be added before selected service
-			addMarker: function () {
-				var newname = prompt(tstr_bqe_name_marker + ':');
-				if (newname.length) {
-	
+			_addMarker: function (sp) {
+				var newname = '';
+				if (!sp)
+					newname = prompt(tstr_bqe_name_marker + ':');
+				if (newname.length || sp) {
 					var bref = $('#bql li.ui-selected').data('sref');
 					var dstref = $('#bqs li.ui-selected').data('sref') || '';
-		
+					var params = { sBouquetRef: bref, Name: newname, sRefBefore: dstref };
+					if(sp)
+						params = { sBouquetRef: bref, SP: '1', sRefBefore: dstref };
 					$.ajax({
 						url: '/bouqueteditor/api/addmarkertobouquet',
 						dataType: 'json',
 						cache: false,
-						data: { sBouquetRef: bref, Name: newname, sRefBefore: dstref }, 
+						data: params, 
 						success: function ( data ) {
 							var r = data.Result;
 							if (r.length == 2) {
@@ -771,8 +791,9 @@
 
 				$('#btn-channel-delete').click(self.deleteChannel);
 				$('#btn-marker-add').click(self.addMarker);
+				$('#btn-spacer-add').click(self.addSpacer);
 				$('#btn-marker-group-rename').click(self.renameMarkerGroup);
-
+				
 				// Setup selection callback function for left pane providers list
 				// Triggers building services list for selected provider
 				$('#provider').selectable({

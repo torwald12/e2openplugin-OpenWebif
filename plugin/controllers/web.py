@@ -154,6 +154,8 @@ class WebController(BaseController):
 		return remoteControl(id, type, rcu)
 
 	def P_powerstate(self, request):
+		if "shift" in request.args.keys():
+			self.P_set_powerup_without_waking_tv(request)
 		if "newstate" in request.args.keys():
 			return setPowerState(self.session, request.args["newstate"][0])
 		return getStandbyState(self.session)
@@ -190,30 +192,19 @@ class WebController(BaseController):
 	def P_getcurrlocation(self, request):
 		return getCurrentLocation()
 
-#TODO: remove the setting for xmbc and use a extra url parameter 
-#the openwebif config setting is not the right position
-
 	def P_getallservices(self, request):
 		self.isGZ=True
 		type = "tv"
 		if "type" in request.args.keys():
 			type = "radio"
-# NEW : use url parameter instead of setting
+		bouquets = getAllServices(type)
 		if "renameserviceforxmbc" in request.args.keys():
-			bouquets = getAllServices(type)
 			count = 0
 			for bouquet in bouquets["services"]:
 				for service in bouquet["subservices"]:
 					service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
 					count += 1
 			return bouquets
-
-		bouquets = getAllServices(type)
-		count = 0
-		for bouquet in bouquets["services"]:
-			for service in bouquet["subservices"]:
-				service["servicename"] = "%d - %s" % (count + 1, service["servicename"])
-				count += 1
 		return bouquets
 
 	def P_getservices(self, request):
@@ -1162,10 +1153,10 @@ class WebController(BaseController):
 	def P_css(self, request):
 		request.setHeader("content-type", "text/css")
 		ret = {}
+		theme = 'original'
 		if config.OpenWebif.webcache.theme.value:
-			ret['theme'] = config.OpenWebif.webcache.theme.value
-		else:
-			ret['theme'] = 'redmond'
+			theme = config.OpenWebif.webcache.theme.value
+		ret['theme'] = theme
 		return ret
 
 	def P_setmepgmode(self, request):

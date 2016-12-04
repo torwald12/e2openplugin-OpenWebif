@@ -62,6 +62,7 @@ class BaseController(resource.Resource):
 		self.isJson = False
 		self.isCustom = False
 		self.isGZ = False
+		self.isMobile = False
 
 	def error404(self, request):
 		request.setHeader("content-type", "text/html")
@@ -99,6 +100,7 @@ class BaseController(resource.Resource):
 		isJson = self.isJson
 		isCustom = self.isCustom
 		isGZ = self.isGZ
+		isMobile = self.isMobile
 
 		if self.path == "":
 			self.path = "index"
@@ -169,7 +171,10 @@ class BaseController(resource.Resource):
 					print "[OpenWebif] ERROR! Template not found for page '%s'" % request.uri
 					self.error404(request)
 				else:
-					if self.withMainTemplate:
+					if self.isMobile:
+						head = self.loadTemplate('mobile/head', 'head', [])
+						out = head + out
+					elif self.withMainTemplate:
 						args = self.prepareMainTemplate(request)
 						args["content"] = out
 						nout = self.loadTemplate("main", "main", args)
@@ -204,6 +209,7 @@ class BaseController(resource.Resource):
 		self.isJson = isJson
 		self.isCustom = isCustom
 		self.isGZ = isGZ
+		self.isMobile = isMobile
 
 		return server.NOT_DONE_YET
 
@@ -293,9 +299,28 @@ class BaseController(resource.Resource):
 		except ImportError:
 			pass
 
+		try:
+			# this will currenly only works if NO Webiterface plugin installed
+			# TODO: test if webinterface AND openwebif installed
+			from Plugins.Extensions.WebInterface.WebChilds.Toplevel import loaded_plugins
+			for plugins in loaded_plugins:
+				if plugins[0] in ["fancontrol"]:
+					try:
+						extras.append({ 'key': plugins[0], 'description': plugins[2] , 'nw':'2'})
+					except KeyError:
+						pass
+		except ImportError:
+			pass
+
 		ret['extras'] = extras
+		theme = 'original'
 		if config.OpenWebif.webcache.theme.value:
-			ret['theme'] = config.OpenWebif.webcache.theme.value
-		else:
-			ret['theme'] = 'original'
+			theme = config.OpenWebif.webcache.theme.value
+		if not os.path.exists(getPublicPath('themes')):
+			if not ( theme == 'original' or theme == 'clear'):
+				theme = 'original'
+				config.OpenWebif.webcache.theme.value = theme
+				config.OpenWebif.webcache.theme.save()
+		ret['theme'] = theme
+		ret['webtv'] = os.path.exists(getPublicPath('webtv'))
 		return ret
