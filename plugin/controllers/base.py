@@ -270,7 +270,7 @@ class BaseController(resource.Resource):
 				extras.append({ 'key': lcd4linux_key, 'description': _("LCD4Linux Setup") , 'nw':'1'})
 
 		self.oscamconf = self.oscamconfPath()
-		if self.oscamconf is not None:
+		if fileExists(self.oscamconf) and self.oscamconf is not None:
 			data = open(self.oscamconf, "r").readlines()
 			proto = "http"
 			port = None
