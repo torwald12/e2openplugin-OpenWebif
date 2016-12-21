@@ -126,8 +126,11 @@ class AjaxController(BaseController):
 			fulldesc = False
 			if "full" in request.args.keys():
 				fulldesc=True
-			ev = getSearchEpg(request.args["sstr"][0],None,fulldesc)
-			events = ev["events"]
+			bouquetsonly = False
+			if "bouquetsonly" in request.args.keys():
+				bouquetsonly = True
+			ev = getSearchEpg(request.args["sstr"][0],None,fulldesc,bouquetsonly)
+			events = sorted(ev["events"], key=lambda ev: ev['begin_timestamp'])
 		at = False
 		if len(events) > 0: 
 			t = getTimers(self.session)
@@ -199,6 +202,14 @@ class AjaxController(BaseController):
 
 	def P_tv(self, request):
 		return {}
+
+	def P_tvradio(self, request):
+		epgmode = "tv"
+		if "epgmode" in request.args.keys():
+			epgmode = request.args["epgmode"][0]
+			if epgmode not in ["tv", "radio"]:
+				epgmode = "tv"
+		return{"epgmode": epgmode}
 
 	def P_config(self, request):
 		section = "usage"
